@@ -7,43 +7,167 @@ import { SITE_TITLE, SITE_DESCRIPTION } from '../consts';
 
 <!doctype html>
 <html lang="en">
-	<head>
-		<BaseHead title={SITE_TITLE} description={SITE_DESCRIPTION} />
-	</head>
-	<body>
-		<Header />
-		<main>
-			<h1>🧑‍🚀 Hello, Astronaut!</h1>
-			<p>
-				Welcome to the official <a href="https://astro.build/">Astro</a> blog starter template. This
-				template serves as a lightweight, minimally-styled starting point for anyone looking to build
-				a personal website, blog, or portfolio with Astro.
-			</p>
-			<p>
-				This template comes with a few integrations already configured in your
-				<code>astro.config.mjs</code> file. You can customize your setup with
-				<a href="https://astro.build/integrations">Astro Integrations</a> to add tools like Tailwind,
-				React, or Vue to your project.
-			</p>
-			<p>Here are a few ideas on how to get started with the template:</p>
-			<ul>
-				<li>Edit this page in <code>src/pages/index.astro</code></li>
-				<li>Edit the site header items in <code>src/components/Header.astro</code></li>
-				<li>Add your name to the footer in <code>src/components/Footer.astro</code></li>
-				<li>Check out the included blog posts in <code>src/content/blog/</code></li>
-				<li>Customize the blog post page layout in <code>src/layouts/BlogPost.astro</code></li>
-			</ul>
-			<p>
-				Have fun! If you get stuck, remember to
-				<a href="https://docs.astro.build/">read the docs</a>
-				or <a href="https://astro.build/chat">join us on Discord</a> to ask questions.
-			</p>
-			<p>
-				Looking for a blog template with a bit more personality? Check out
-				<a href="https://github.com/Charca/astro-blog-template">astro-blog-template</a>
-				by <a href="https://twitter.com/Charca">Maxi Ferreira</a>.
-			</p>
-		</main>
-		<Footer />
-	</body>
+  <head>
+    <BaseHead title={SITE_TITLE} description={SITE_DESCRIPTION} />
+  </head>
+  <body class="antialiased">
+    <Header />
+
+    <!-- ⬇︎ nota la clase .home que usamos en el override CSS -->
+    <main class="home">
+      <!-- HERO ----------------------------------------------------------->
+      <section
+      class="bg-[#FFFFFF]                      /* tono extra-light */
+            relative                          /* para posicionar la sombra */
+            w-full px-4 py-16
+            grid grid-cols-1 md:grid-cols-2 gap-10 items-center">
+      <div>
+        <img
+          src="/vivipilates.PNG"
+          alt="Retrato de Vivi"
+          width="800"
+          height="533"
+          loading="lazy"
+          class="w-full rounded-xl object-cover shadow-lg"
+        />
+      </div>
+
+      <!-- Columna 2 · TEXTO -->
+      <div class="space-y-6">
+        <h1 class="text-5xl font-extrabold text-peach-900">
+          Hello, je suis Vivi!
+        </h1>
+
+        <p class="text-peach-900">
+          Welcome to the official
+          <a
+            href="https://astro.build/"
+            class="text-peach-600 underline hover:text-peach-400"
+            >Astro</a
+          >
+          blog starter template. This template serves as a lightweight,
+          minimally-styled starting point for anyone looking to build a personal
+          website, blog, or portfolio with Astro.
+        </p>
+
+        <p class="text-peach-900">
+          This template comes with a few integrations already configured in your
+          <code
+            class="px-1 py-0.5 rounded bg-peach-200 text-peach-900"
+            >astro.config.mjs</code
+          >
+          file. You can customize your setup with
+          <a
+            href="https://astro.build/integrations"
+            class="text-peach-600 underline hover:text-peach-400"
+            >Astro Integrations</a
+          >
+          to add tools like Tailwind, React, or Vue to your project.
+        </p>
+
+        <p class="text-peach-900">
+          Have fun! If you get stuck, remember to
+          <a
+            href="https://docs.astro.build/"
+            class="text-peach-600 underline hover:text-peach-400"
+            >read the docs</a
+          >
+          or
+          <a
+            href="https://astro.build/chat"
+            class="text-peach-600 underline hover:text-peach-400"
+            >join us on Discord</a
+          >.
+        </p>
+      </div>
+    </section>
+      <!-- SECCIÓN ESTILO “CARDS” ------------------------------------------>
+      <section class="bg-[#FFD6BA] py-20">
+        <div class="max-w-6xl mx-auto px-2">
+          <!-- Título -->
+          <h2 class="text-4xl md:text-6xl font-extrabold text-white text-center mb-16">
+            Bouge avec moi
+          </h2>
+
+          <!-- Tarjetas -->
+          <div class="grid gap-10 sm:grid-cols-2 md:grid-cols-3">
+            <!-- Yoga ------------------------------------------------------->
+            <div
+              class="flex flex-col items-center rounded-2xl bg-white shadow-xl p-10
+                    transition hover:-translate-y-2 hover:shadow-2xl"
+            >
+              <img
+                src="/yoga.png"
+                alt="Yoga"
+                class="h-24 w-24 object-contain mb-6"
+              />
+              <h3 class="text-2xl font-semibold mb-4">Mobilité</h3>
+              <p class="text-center text-[#331c10]/70 mb-8">
+                Séances axées sur la flexibilité<br/>et la pleine conscience.
+              </p>
+              <a
+                href="/yoga"
+                class="mt-auto inline-block rounded-lg bg-[#d89a6b] px-6 py-3
+                !text-black font-semibold tracking-wide no-underline
+                hover:!text-white hover:bg-[#331c10]"
+                >
+                Découvrir
+              </a>
+            </div>
+
+            <!-- Pilates ---------------------------------------------------->
+            <div
+              class="flex flex-col items-center rounded-2xl bg-white shadow-xl p-10
+                    transition hover:-translate-y-2 hover:shadow-2xl"
+            >
+              <img
+                src="/pilates.png"
+                alt="Pilates"
+                class="h-24 w-24 object-contain mb-6"
+              />
+              <h3 class="text-2xl font-semibold mb-4">Pilates</h3>
+              <p class="text-center text-gray-600 mb-8">
+                Renforce ton centre et<br/>améliore ta posture.
+              </p>
+              <a
+                href="/pilates"
+                class="mt-auto inline-block rounded-lg bg-[#d89a6b] px-6 py-3
+                !text-black font-semibold tracking-wide no-underline
+                hover:!text-white hover:bg-[#331c10]"
+              >
+                Participer
+              </a>
+            </div>
+
+            <!-- Running ---------------------------------------------------->
+            <div
+              class="flex flex-col items-center rounded-2xl bg-white shadow-xl p-10
+                    transition hover:-translate-y-2 hover:shadow-2xl"
+            >
+              <img
+                src="/runner.png"
+                alt="Running"
+                class="h-24 w-24 object-contain mb-6"
+              />
+              <h3 class="text-2xl font-semibold mb-4">Running</h3>
+              <p class="text-center text-gray-600 mb-8">
+                Programmes cardio pour<br/>repousser tes limites.
+              </p>
+              <a
+                href="/running"
+                class="mt-auto inline-block rounded-lg bg-[#d89a6b] px-6 py-3
+                !text-black font-semibold tracking-wide no-underline
+                hover:!text-white hover:bg-[#331c10]"
+              >
+                S’inscrire
+              </a>
+            </div>
+          </div>
+        </div>
+      </section>
+      
+    </main>
+
+    <Footer />
+  </body>
 </html>
