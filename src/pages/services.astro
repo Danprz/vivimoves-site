@@ -1,0 +1,130 @@
+---
+import BaseHead from '../components/BaseHead.astro';
+import Header   from '../components/Header.astro';
+import Footer   from '../components/Footer.astro';
+import { SITE_TITLE } from '../consts';
+---
+
+<!doctype html>
+<html lang="fr">
+  <head>
+    <BaseHead title={`Services · ${SITE_TITLE}`} description='This is the services' />
+  </head>
+
+  <body class="antialiased">
+    <Header />
+
+    <!-- INTRO ---------------------------------------------------------->
+    <section
+      class="bg-[#FFFCFA] relative w-full px-1 py-8 flex flex-col items-center text-center"
+    >
+      <!-- sombra bajo el header -->
+      <div
+        class="pointer-events-none absolute inset-x-0 -top-6 h-6
+               bg-gradient-to-b from-black/10/5 to-transparent"
+      ></div>
+
+      <h1 class="text-4xl md:text-6xl font-extrabold text-[#331c10] mb-6">
+       Cours privés
+      </h1>
+      <p>
+        Je vous propose une méthode alliant mobilité, renforcement et respiration pour améliorer posture, fluidité et bien-être. 
+      </p>
+      <p>
+        Un entraînement efficace et doux, pensé pour prendre soin de votre corps au quotidien.
+      </p>
+    </section>
+
+    <!-- TARIFARIO ------------------------------------------------------>
+    <section class="bg-[#FFD6BA] py-20">
+        <div class="max-w-6xl mx-auto px-4
+                    grid gap-12 sm:grid-cols-2 lg:grid-cols-3">
+      
+          <!-- NEW · Bilan général gratuit ------------------------------->
+          <div
+            class="flex flex-col rounded-2xl bg-white shadow-xl p-10
+                   transition hover:-translate-y-2 hover:shadow-2xl"
+          >
+            <h2 class="text-2xl font-semibold text-[#331c10] mb-4">
+                🧭 Bilan mobilité & souplesse 
+            </h2>
+      
+            <ul class="space-y-2 text-[#331c10] mb-8 leading-relaxed">
+              <li>✓ Évaluation complète (45 min)</li>
+              <li>✓ Analyse posture &amp; amplitudes</li>
+              <li>✓ Recommandations personnalisées</li>
+            </ul>
+      
+            <div class="mt-auto text-center">
+              <span class="text-4xl font-extrabold text-[#331c10]">Offert</span>
+              <p class="text-[#331c10]/70">première séance</p>
+              <a
+                href="/contact#contact-form"
+                class="mt-auto inline-block rounded-lg bg-[#d89a6b] px-6 py-3
+                !text-black font-semibold tracking-wide no-underline
+                hover:!text-white hover:bg-[#331c10]"
+              >
+                Réserver
+              </a>
+            </div>
+          </div>
+      
+          <!-- Coaching en studio ----------------------------------------->
+          <div
+            class="flex flex-col rounded-2xl bg-white shadow-xl p-10
+                   transition hover:-translate-y-2 hover:shadow-2xl"
+          >
+            <h2 class="text-2xl font-semibold text-[#331c10] mb-4">
+                🧘‍♀️ Séance privé
+            </h2>
+            <ul class="space-y-2 text-[#331c10] mb-8 leading-relaxed">
+              <li>✓ Studio à Cergy (95)</li>
+              <li>✓ Possibilité de duo/trio au même tarif</li>
+              <li>✓ Adapté à vos objectifs et vos besoins</li>
+            </ul>
+            <div class="mt-auto text-center">
+              <span class="text-4xl font-extrabold text-[#331c10]">60 €</span>
+              <p class="text-[#331c10]/70">par séance</p>
+              <a
+                href="/contact#contact-form"
+                class="mt-auto inline-block rounded-lg bg-[#d89a6b] px-6 py-3
+                !text-black font-semibold tracking-wide no-underline
+                hover:!text-white hover:bg-[#331c10]"
+              >
+                Réserver
+              </a>
+            </div>
+          </div>
+      
+          <!-- Coaching à domicile --------------------------------------->
+          <div
+            class="flex flex-col rounded-2xl bg-white shadow-xl p-10
+                   transition hover:-translate-y-2 hover:shadow-2xl"
+          >
+            <h2 class="text-2xl font-semibold text-[#331c10] mb-4">
+                🌿 Séance privé à domicile 
+            </h2>
+            <ul class="space-y-2 text-[#331c10] mb-8 leading-relaxed">
+              <li>✓ Chez vous ou en extérieur</li>
+              <li>✓ Possibilité de duo/trio au même tarif</li>
+              <li>✓ Adapté à vos objectifs et vos besoins</li>
+            </ul>
+            <div class="mt-auto text-center">
+              <span class="text-4xl font-extrabold text-[#331c10]">70 €</span>
+              <p class="text-[#331c10]/70">par séance (Paris intramuros)</p>
+              <a
+                href="/contact#contact-form"
+                class="mt-auto inline-block rounded-lg bg-[#d89a6b] px-6 py-3
+                !text-black font-semibold tracking-wide no-underline
+                hover:!text-white hover:bg-[#331c10]"
+              >
+                Réserver
+              </a>
+            </div>
+          </div>
+        </div>
+      </section>
+
+    <Footer />
+  </body>
+</html>

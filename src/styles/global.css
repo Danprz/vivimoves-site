@@ -69,27 +69,32 @@ main.home {
 	padding: 1em;
 }
   
-h1,
-h2,
-h3,
-h4,
-h5,
+
 h6 {
 	margin: 0 0 0.5rem 0;
 	color: rgb(var(--black));
 	line-height: 1.2;
 }
 h1 {
-	font-size: 3.052em;
-}
+	font-size: clamp(2.8rem, 6vw + 1rem, 4.5rem);
+	line-height: 1.1;
+	font-weight: 800;          /* extra-bold para marcar jerarquía */
+	letter-spacing: -0.02em;   /* ligero “tightening” */
+	margin-bottom: 0em;      /* aire debajo */
+  }
 h2 {
-	font-size: 2.441em;
-}
+	font-size: 1.2em;
+	line-height: 1.25;
+	font-weight: 150;
+	margin-bottom: 0.5em;
+	color:#d89a6b;
+
+  }
 h3 {
 	font-size: 1.953em;
 }
 h4 {
-	font-size: 1.563em;
+	font-size: 1.10em;
 }
 h5 {
 	font-size: 1.25em;
