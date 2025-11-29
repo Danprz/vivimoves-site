@@ -4,89 +4,194 @@ import { SITE_TITLE } from '../consts';
 ---
 
 <header>
-	<nav>
-		<h2 class="flex items-center">
-			<a href="/" class="block">
-			  <img
-				src="/soleil.png"
-				alt={SITE_TITLE}     
-				width="50"         
-				height="15"
-				loading="eager"      
-			  />
-			</a>
-		  </h2>
-		<div class="internal-links">
-			<HeaderLink href="/">Qui suis-je ?</HeaderLink>
-			<!-- <HeaderLink href="/about">Pilates & Mobilité</HeaderLink>-->
-			<HeaderLink href="/services">Bougez avec moi</HeaderLink>
-			<HeaderLink href="/contact">Contactez-moi</HeaderLink>
-		</div>
-		<div class="social-links">
-			<a href="https://www.instagram.com/virginia.moves/?igsh=aHF1MHl6b3VzN3p2#" target="_blank">
-				<span class="sr-only">Follow Astro on Mastodon</span>
-				<svg id="instagram"  version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" 
-				width="32" height="32" viewBox="0 0 169.063 169.063" 
-				style="enable-background:new 0 0 169.063 169.063;" xml:space="preserve"> 
-					<g>
-						<path d="M122.406,0H46.654C20.929,0,0,20.93,0,46.655v75.752c0,25.726,20.929,46.655,46.654,46.655h75.752
-								c25.727,0,46.656-20.93,46.656-46.655V46.655C169.063,20.93,148.133,0,122.406,0z M154.063,122.407
-								c0,17.455-14.201,31.655-31.656,31.655H46.654C29.2,154.063,15,139.862,15,122.407V46.655C15,29.201,29.2,15,46.654,15h75.752
-								c17.455,0,31.656,14.201,31.656,31.655V122.407z" />
-						<path d="M84.531,40.97c-24.021,0-43.563,19.542-43.563,43.563c0,24.02,19.542,43.561,43.563,43.561s43.563-19.541,43.563-43.561
-								C128.094,60.512,108.552,40.97,84.531,40.97z M84.531,113.093c-15.749,0-28.563-12.812-28.563-28.561
-								c0-15.75,12.813-28.563,28.563-28.563s28.563,12.813,28.563,28.563C113.094,100.281,100.28,113.093,84.531,113.093z" />
-						<path d="M129.921,28.251c-2.89,0-5.729,1.17-7.77,3.22c-2.051,2.04-3.23,4.88-3.23,7.78c0,2.891,1.18,5.73,3.23,7.78
-								c2.04,2.04,4.88,3.22,7.77,3.22c2.9,0,5.73-1.18,7.78-3.22c2.05-2.05,3.22-4.89,3.22-7.78c0-2.9-1.17-5.74-3.22-7.78
-								C135.661,29.421,132.821,28.251,129.921,28.251z" />
-					</g>
-				</svg>
-		</div>
-	</nav>
+        <nav>
+                <h2 class="flex items-center">
+                        <a href="/" class="block">
+                          <img
+                                src="/soleil.png"
+                                alt={SITE_TITLE}
+                                width="50"
+                                height="15"
+                                loading="eager"
+                          />
+                        </a>
+                  </h2>
+                  <button class="menu-toggle" type="button" aria-expanded="false" aria-controls="primary-nav" data-menu-toggle>
+                        <span class="sr-only">Ouvrir le menu de navigation</span>
+                        <span aria-hidden="true">☰</span>
+                  </button>
+                <div class="nav-content" id="primary-nav" data-menu>
+                        <div class="internal-links">
+                                <HeaderLink href="/">Qui suis-je ?</HeaderLink>
+                                <!-- <HeaderLink href="/about">Pilates & Mobilité</HeaderLink>-->
+                                <HeaderLink href="/services">Bougez avec moi</HeaderLink>
+                                <HeaderLink href="/contact">Contactez-moi</HeaderLink>
+                        </div>
+                        <div class="social-links">
+                                <a href="https://www.instagram.com/virginia.moves/?igsh=aHF1MHl6b3VzN3p2#" target="_blank">
+                                        <span class="sr-only">Follow Astro on Mastodon</span>
+                                        <svg id="instagram"  version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink"
+                                        width="32" height="32" viewBox="0 0 169.063 169.063"
+                                        style="enable-background:new 0 0 169.063 169.063;" xml:space="preserve">
+                                                <g>
+                                                        <path d="M122.406,0H46.654C20.929,0,0,20.93,0,46.655v75.752c0,25.726,20.929,46.655,46.654,46.655h75.752
+                                                                        c25.727,0,46.656-20.93,46.656-46.655V46.655C169.063,20.93,148.133,0,122.406,0z M154.063,122.407
+                                                                        c0,17.455-14.201,31.655-31.656,31.655H46.654C29.2,154.063,15,139.862,15,122.407V46.655C15,29.201,29.2,15,46.654,15h75.752
+                                                                        c17.455,0,31.656,14.201,31.656,31.655V122.407z" />
+                                                        <path d="M84.531,40.97c-24.021,0-43.563,19.542-43.563,43.563c0,24.02,19.542,43.561,43.563,43.561s43.563-19.541,43.563-43.561
+                                                                        C128.094,60.512,108.552,40.97,84.531,40.97z M84.531,113.093c-15.749,0-28.563-12.812-28.563-28.561
+                                                                        c0-15.75,12.813-28.563,28.563-28.563s28.563,12.813,28.563,28.563C113.094,100.281,100.28,113.093,84.531,113.093z" />
+                                                        <path d="M129.921,28.251c-2.89,0-5.729,1.17-7.77,3.22c-2.051,2.04-3.23,4.88-3.23,7.78c0,2.891,1.18,5.73,3.23,7.78
+                                                                        c2.04,2.04,4.88,3.22,7.77,3.22c2.9,0,5.73-1.18,7.78-3.22c2.05-2.05,3.22-4.89,3.22-7.78c0-2.9-1.17-5.74-3.22-7.78
+                                                                        C135.661,29.421,132.821,28.251,129.921,28.251z" />
+                                                </g>
+                                        </svg>
+                        </div>
+                </div>
+        </nav>
 </header>
 
 
 <style>
-	/*  — PALETA —  
-	   Asegúrate de tener en :root las variables:
-		   --clr-50 : #FFF8F5;
-		   --clr-400: #FFD6BA;
-		   --clr-600: #d89a6b;
-		   --clr-900: #331c10;
-	*/
+        /*  — PALETA —
+           Asegúrate de tener en :root las variables:
+                   --clr-50 : #FFF8F5;
+                   --clr-400: #FFD6BA;
+                   --clr-600: #d89a6b;
+                   --clr-900: #331c10;
+        */
 
-	header {
-		padding: 0.75rem;
-		background: var(--clr-50);            /* fondo crema muy claro   */
-		box-shadow: 0 2px 8px rgba(0, 0, 0, .04); /* sombra sutil */
-	}
+        header {
+                position: relative;
+                padding: 0.75rem;
+                background: var(--clr-50);            /* fondo crema muy claro   */
+                box-shadow: 0 2px 8px rgba(0, 0, 0, .04); /* sombra sutil */
+        }
 
-	nav { display: flex; align-items: center; }
+        nav {
+                display: flex;
+                align-items: center;
+                gap: 1rem;
+        }
 
-	/* ① Logo fijo, ② Links flexibles centrados, ③ Icono fijo */
-	h2 { flex: 0 0 auto; margin: 0; }
+        /* ① Logo fijo, ② Links flexibles centrados, ③ Icono fijo */
+        h2 { flex: 0 0 auto; margin: 0; }
 
-	.internal-links {
-		flex: 1 1 auto;
-		display: flex;
-		justify-content: center;
-	}
+        .menu-toggle {
+                display: none;
+                align-items: center;
+                justify-content: center;
+                gap: 0.35rem;
+                padding: 0.6rem 0.8rem;
+                border-radius: 10px;
+                border: 1px solid var(--clr-400);
+                background: #fff;
+                color: var(--clr-900);
+                font-weight: 600;
+                cursor: pointer;
+        }
 
-	.social-links {
-		flex: 0 0 auto;
-		margin-left: auto;
-		display: flex;
-	}
+        .nav-content {
+                flex: 1 1 auto;
+                display: flex;
+                align-items: center;
+                gap: 1rem;
+        }
 
-	/* enlaces */
-	nav a {
-		padding: 1rem .75rem;
-		color: var(--clr-900);                 /* texto oscuro de la paleta */
-		text-decoration: none;
-		border-bottom: 4px solid transparent;
-		transition: color .2s, border-color .2s;
-	}
-	nav a:hover { color: var(--clr-600); }    /* tono medio en hover      */
-	nav a.active {
-		border-bottom-color: var(--clr-400);   /* melocotón               */
-		color:
+        .internal-links {
+                flex: 1 1 auto;
+                display: flex;
+                justify-content: center;
+                gap: 0.35rem;
+        }
+
+        .social-links {
+                flex: 0 0 auto;
+                margin-left: auto;
+                display: flex;
+        }
+
+        /* enlaces */
+        nav a {
+                padding: 1rem .75rem;
+                color: var(--clr-900);                 /* texto oscuro de la paleta */
+                text-decoration: none;
+                border-bottom: 4px solid transparent;
+                transition: color .2s, border-color .2s;
+        }
+        nav a:hover { color: var(--clr-600); }    /* tono medio en hover      */
+        nav a.active {
+                border-bottom-color: var(--clr-400);   /* melocotón               */
+                color: var(--clr-900);
+                font-weight: 700;
+        }
+
+        @media (max-width: 768px) {
+                header { padding: 0.6rem 0.75rem; }
+
+                nav { align-items: center; }
+
+                .menu-toggle { display: inline-flex; margin-left: auto; }
+
+                .nav-content {
+                        position: absolute;
+                        top: 100%;
+                        left: 0;
+                        right: 0;
+                        background: var(--clr-50);
+                        flex-direction: column;
+                        align-items: stretch;
+                        gap: 0.25rem;
+                        padding: 0.5rem 0.75rem 0.75rem;
+                        box-shadow: 0 8px 16px rgba(0, 0, 0, 0.06);
+                        border-radius: 0 0 12px 12px;
+                        opacity: 0;
+                        visibility: hidden;
+                        transform: translateY(-8px);
+                        transition: opacity .2s ease, transform .2s ease, visibility .2s ease;
+                }
+
+                .nav-content.is-open {
+                        opacity: 1;
+                        visibility: visible;
+                        transform: translateY(0);
+                }
+
+                .internal-links {
+                        flex-direction: column;
+                        align-items: flex-start;
+                        gap: 0.25rem;
+                }
+
+                .social-links { margin-left: 0; }
+
+                nav a {
+                        padding: 0.6rem 0;
+                        width: 100%;
+                }
+        }
+</style>
+
+<script>
+        if (typeof window !== 'undefined') {
+                window.addEventListener('DOMContentLoaded', () => {
+                        const toggle = document.querySelector('[data-menu-toggle]');
+                        const menu = document.querySelector('[data-menu]');
+
+                        if (!toggle || !menu) return;
+
+                        toggle.addEventListener('click', () => {
+                                const expanded = toggle.getAttribute('aria-expanded') === 'true';
+                                toggle.setAttribute('aria-expanded', String(!expanded));
+                                menu.classList.toggle('is-open', !expanded);
+                        });
+
+                        window.addEventListener('resize', () => {
+                                if (window.innerWidth > 768) {
+                                        menu.classList.remove('is-open');
+                                        toggle.setAttribute('aria-expanded', 'false');
+                                }
+                        });
+                });
+        }
+</script>
