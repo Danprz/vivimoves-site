@@ -47,46 +47,81 @@ import { SITE_TITLE } from '../consts';
 
 
 <style>
-	/*  — PALETA —  
-	   Asegúrate de tener en :root las variables:
-		   --clr-50 : #FFF8F5;
-		   --clr-400: #FFD6BA;
-		   --clr-600: #d89a6b;
-		   --clr-900: #331c10;
-	*/
-
 	header {
-		padding: 0.75rem;
-		background: var(--clr-50);            /* fondo crema muy claro   */
-		box-shadow: 0 2px 8px rgba(0, 0, 0, .04); /* sombra sutil */
+	padding: 0.75rem;
+	background: var(--clr-50);
+	box-shadow: 0 2px 8px rgba(0, 0, 0, .04);
+}
+
+nav {
+	display: flex;
+	align-items: center;
+}
+
+/* Desktop */
+h2 {
+	flex: 0 0 auto;
+	margin: 0;
+}
+
+.internal-links {
+	flex: 1 1 auto;
+	display: flex;
+	justify-content: center;
+}
+
+.social-links {
+	flex: 0 0 auto;
+	margin-left: auto;
+	display: flex;
+}
+
+/* enlaces */
+nav a {
+	padding: 1rem .75rem;
+	color: var(--clr-900);
+	text-decoration: none;
+	border-bottom: 4px solid transparent;
+	transition: color .2s, border-color .2s;
+}
+
+nav a:hover {
+	color: var(--clr-600);
+}
+
+nav a.active {
+	border-bottom-color: var(--clr-400);
+}
+
+/* 💡 Mobile */
+@media (max-width: 640px) {
+	nav {
+		flex-wrap: wrap;           /* permite varias filas */
+		row-gap: 0.25rem;
 	}
 
-	nav { display: flex; align-items: center; }
-
-	/* ① Logo fijo, ② Links flexibles centrados, ③ Icono fijo */
-	h2 { flex: 0 0 auto; margin: 0; }
-
-	.internal-links {
-		flex: 1 1 auto;
-		display: flex;
-		justify-content: center;
+	/* 1ª fila: logo izquierda, IG derecha */
+	h2 {
+		order: 0;
 	}
 
 	.social-links {
-		flex: 0 0 auto;
-		margin-left: auto;
-		display: flex;
+		order: 1;
+		margin-left: auto;        /* se empuja a la derecha */
 	}
 
-	/* enlaces */
-	nav a {
-		padding: 1rem .75rem;
-		color: var(--clr-900);                 /* texto oscuro de la paleta */
-		text-decoration: none;
-		border-bottom: 4px solid transparent;
-		transition: color .2s, border-color .2s;
+	/* 2ª fila: enlaces centrados ocupando todo el ancho */
+	.internal-links {
+		order: 2;
+		width: 100%;
+		justify-content: center;
+		margin-top: 0.25rem;
 	}
-	nav a:hover { color: var(--clr-600); }    /* tono medio en hover      */
-	nav a.active {
-		border-bottom-color: var(--clr-400);   /* melocotón               */
-		color:
+
+	.internal-links a {
+		padding: 0.5rem 0.5rem;
+		font-size: 0.9rem;
+		white-space: nowrap;
+	}
+}
+</style>

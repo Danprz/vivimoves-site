@@ -3,26 +3,45 @@ const today = new Date();
 ---
 
 <footer>
-	&copy; {today.getFullYear()} Your name here. All rights reserved.
+  <p class="footer-brand">
+    &copy; {today.getFullYear()} Virginia Moves. Tous droits réservés.
+  </p>
+  <p class="footer-credit">
+    Made by <span class="footer-credit-name">Daniprz</span>
+  </p>
 </footer>
+
 <style>
-	footer {
-		padding: 2em 1em 6em 1em;
-		background: linear-gradient(var(--clr-50)) no-repeat;
-		color: grey;
-		text-align: center;
-	}
-	.social-links {
-		display: flex;
-		justify-content: center;
-		gap: 1em;
-		margin-top: 1em;
-	}
-	.social-links a {
-		text-decoration: none;
-		color: rgb(var(--gray));
-	}
-	.social-links a:hover {
-		color: rgb(var(--gray-dark));
-	}
+  footer {
+    padding: 2em 1em 4em 1em;
+    background: var(--clr-50);
+    color: var(--clr-900);
+    text-align: center;
+    font-size: 0.95rem;
+  }
+
+  .footer-brand {
+    margin: 0 0 .25rem 0;
+    font-weight: 500;
+  }
+
+  .footer-credit {
+    margin: 0;
+    font-size: 0.85rem;
+    opacity: 0.8;
+  }
+
+  .footer-credit-name {
+    font-weight: 600;
+  }
+
+  @media (max-width: 640px) {
+    footer {
+      padding-bottom: 3em;
+      font-size: 0.9rem;
+    }
+    .footer-credit {
+      font-size: 0.8rem;
+    }
+  }
 </style>
