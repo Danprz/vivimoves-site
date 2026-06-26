@@ -1,0 +1,175 @@
+---
+import BaseHead from '../components/BaseHead.astro';
+import Header   from '../components/Header.astro';
+import Footer   from '../components/Footer.astro';
+import { SITE_TITLE } from '../consts';
+---
+
+<!doctype html>
+<html lang="fr">
+  <head>
+    <BaseHead
+      title={`Pilates en plein air · ${SITE_TITLE}`}
+      description="Cours de Pilates en plein air au Parc François Mitterrand à Cergy avec Le PR Club. Tous niveaux, le lundi en soirée. Travail postural, gainage, mobilité et respiration."
+    />
+  </head>
+
+  <body class="antialiased">
+    <Header />
+
+    <!-- HERO ----------------------------------------------------------->
+    <section class="bg-[#FFFCFA] w-full px-4 py-12 md:py-16">
+      <div class="max-w-6xl mx-auto">
+        <!-- Ligne : texte (gauche) + photo (droite), même hauteur -->
+        <div class="grid grid-cols-1 md:grid-cols-2 gap-10 items-stretch">
+          <!-- Texte -->
+          <div class="flex flex-col justify-center space-y-5">
+            <p class="text-xs font-semibold tracking-widest text-[#d89a6b] uppercase">
+              Activité sportive · Le PR Club
+            </p>
+
+            <h1 class="text-4xl md:text-5xl font-extrabold text-[#331c10] leading-tight">
+              Pilates en plein air 🌿
+            </h1>
+
+            <p class="text-lg text-[#331c10] leading-relaxed">
+              Cet été 2026, on bouge en plein air à Cergy&nbsp;! Des séances de Pilates
+              <strong>tous niveaux</strong>, en pleine verdure au Parc François Mitterrand,
+              encadrées par une coach diplômée d’État. Viens respirer, te renforcer et
+              te détendre — au grand air, à ton rythme.
+            </p>
+          </div>
+
+          <!-- Image -->
+          <div>
+            <img
+              src="/pilates-plein-air.png"
+              alt="Séance de Pilates en plein air au Parc François Mitterrand à Cergy avec Le PR Club"
+              width="1024"
+              height="768"
+              loading="lazy"
+              class="w-full h-full rounded-xl object-cover shadow-lg"
+            />
+          </div>
+        </div>
+
+        <!-- Adresse sur toute la largeur, sous le texte et la photo -->
+        <div class="mt-10 pt-8 pb-8 border-t border-b border-[#331c10]/10
+                    flex flex-col gap-5 sm:flex-row sm:items-end sm:justify-between">
+          <div>
+            <h2 class="font-bold text-[#331c10] mb-1">Réserve ta place</h2>
+            <p class="text-[#331c10]/80 leading-relaxed">
+              Tu trouveras toutes les infos (dates, horaires, tarifs) sur ce lien.
+            </p>
+          </div>
+
+          <a
+            href="https://leprclub.bookwhen.com/fr/schedules/oq4pwcc8c2aj"
+            target="_blank"
+            rel="noopener"
+            class="inline-flex items-center gap-2 self-start sm:self-auto rounded-lg bg-[#d89a6b] px-5 py-3
+                   !text-black font-semibold tracking-wide no-underline
+                   hover:!text-white hover:bg-[#331c10]
+                   focus:outline-none focus-visible:ring-2 focus-visible:ring-[#331c10] focus-visible:ring-offset-2"
+          >
+            <svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24"
+                 fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+              <rect x="3" y="4" width="18" height="18" rx="2"/><path d="M16 2v4M8 2v4M3 10h18"/>
+            </svg>
+            Réserver ma place
+          </a>
+        </div>
+      </div>
+    </section>
+
+    <!-- LE CLUB -------------------------------------------------------->
+    <section class="bg-white py-12 md:py-16">
+      <div class="max-w-6xl mx-auto px-4 grid grid-cols-1 md:grid-cols-2 gap-10 items-center">
+        <!-- Photo -->
+        <div>
+          <img
+            src="/aude-virginia.png"
+            alt="Aude et Virginia, fondatrices du PR Club"
+            width="768"
+            height="1024"
+            loading="lazy"
+            class="w-full h-full max-h-[480px] rounded-xl object-cover shadow-lg"
+          />
+        </div>
+
+        <!-- Texte -->
+        <div class="space-y-4 text-[#331c10] leading-relaxed">
+          <h2 class="text-3xl md:text-4xl font-extrabold text-[#331c10]">Le PR Club</h2>
+          <p>
+            Nous sommes <strong>Aude &amp; Virginia</strong>, deux coachs diplômées d’État et
+            fondatrices du <strong>PR Club</strong>, né à Cergy-Pontoise en 2025.
+          </p>
+          <p>
+            Plus qu’un cours, le PR Club c’est une communauté : un endroit où l’on bouge ensemble,
+            où chacun a sa place quel que soit son niveau. On y associe le <strong>Pilates</strong> et la
+            <strong>course à pied</strong>, deux disciplines complémentaires, pour une approche
+            équilibrée et accessible du mouvement.
+          </p>
+          <p>
+            Notre envie&nbsp;: faire du sport un rendez-vous joyeux, ancré dans notre territoire et la nature,
+            sans compétition — juste le plaisir de progresser à son rythme, ensemble.
+          </p>
+        </div>
+      </div>
+    </section>
+
+    <!-- HORAIRES & TARIFS ---------------------------------------------->
+    <section class="bg-[#FFFCFA] py-12 md:py-16">
+      <div class="max-w-3xl mx-auto px-4">
+        <h2 class="text-3xl md:text-4xl font-extrabold text-[#331c10] mb-8">Horaires &amp; tarifs</h2>
+
+        <ul class="space-y-4 text-lg text-[#331c10]">
+          <li class="flex items-start gap-3">
+            <span class="w-7 text-center shrink-0" aria-hidden="true">📅</span>
+            <span>Les <strong>lundis à 20h</strong></span>
+          </li>
+          <li class="flex items-start gap-3">
+            <span class="w-7 text-center shrink-0" aria-hidden="true">📅</span>
+            <span>Les <strong>samedis à 11h</strong></span>
+          </li>
+          <li class="flex items-start gap-3">
+            <span class="w-7 text-center shrink-0" aria-hidden="true">⏱️</span>
+            <span>Séance d’<strong>1 heure</strong> · tous niveaux</span>
+          </li>
+          <li class="flex items-start gap-3">
+            <span class="w-7 text-center shrink-0" aria-hidden="true">🧘</span>
+            <span>Prévoir une <strong>tenue confortable</strong> et un <strong>tapis</strong></span>
+          </li>
+          <li class="flex items-start gap-3">
+            <span class="w-7 text-center shrink-0" aria-hidden="true">💶</span>
+            <span><strong>12 €</strong> la séance</span>
+          </li>
+          <li class="flex items-start gap-3">
+            <span class="w-7 text-center shrink-0" aria-hidden="true">☀️</span>
+            <span>Sous réserve de conditions météo favorables</span>
+          </li>
+        </ul>
+
+        <div class="mt-10">
+          <a
+            href="https://leprclub.bookwhen.com/fr/schedules/oq4pwcc8c2aj"
+            target="_blank"
+            rel="noopener"
+            class="inline-flex items-center gap-2 rounded-lg bg-[#d89a6b] px-6 py-3
+                   !text-black font-semibold tracking-wide no-underline
+                   hover:!text-white hover:bg-[#331c10]
+                   focus:outline-none focus-visible:ring-2 focus-visible:ring-[#331c10] focus-visible:ring-offset-2"
+          >
+            <svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24"
+                 fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+              <rect x="3" y="4" width="18" height="18" rx="2"/><path d="M16 2v4M8 2v4M3 10h18"/>
+            </svg>
+            Réserve ta place
+          </a>
+        </div>
+      </div>
+    </section>
+
+    <Footer />
+  </body>
+</html>
