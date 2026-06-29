@@ -18,6 +18,16 @@ const { title, description, image = '/blog-placeholder-1.jpg' } = Astro.props;
 <!-- Global Metadata -->
 <meta charset="utf-8" />
 <meta name="viewport" content="width=device-width,initial-scale=1" />
+
+<!-- Google tag (gtag.js) -->
+<script async src="https://www.googletagmanager.com/gtag/js?id=AW-18275485309" is:inline></script>
+<script is:inline>
+  window.dataLayer = window.dataLayer || [];
+  function gtag(){dataLayer.push(arguments);}
+  gtag('js', new Date());
+
+  gtag('config', 'AW-18275485309');
+</script>
 <link rel="icon" type="image/svg+xml" href="/soleil.svg" />
 <link rel="sitemap" href="/sitemap-index.xml" />
 <link
