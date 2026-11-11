@@ -1,4 +1,5 @@
 ---
+import { Image } from 'astro:assets';
 import Cta from './Cta.astro';
 import type { Atelier } from '../data/ateliers';
 
@@ -18,15 +19,27 @@ const facts = [
 const themesId = `${atelier.slug}-themes`;
 ---
 
-<article id={atelier.slug} class="flex flex-col border-t-2 border-ink pt-6">
-	<h3>«&nbsp;{atelier.title}&nbsp;»</h3>
+<article id={atelier.slug} class="atelier border-t-2 border-ink pt-6">
+	<Image
+		src={atelier.image}
+		alt={atelier.alt}
+		widths={[384, 576, 768]}
+		sizes="(min-width: 64rem) 21rem, 100vw"
+		class="aspect-[4/3] w-full rounded-lg object-cover"
+		loading="lazy"
+	/>
+	<h3 class="mt-5">«&nbsp;{atelier.title}&nbsp;»</h3>
 	<p class="mt-3 font-bold">{atelier.pitch}</p>
 
-	<p class="mt-5" id={themesId}>Nos thématiques&nbsp;:</p>
-	<ul class="mt-2 list-disc space-y-1 pl-5 marker:text-accent-text" aria-labelledby={themesId}>
-		{atelier.themes.map((theme) => <li>{theme}</li>)}
-	</ul>
+	<div class="mt-5">
+		<p id={themesId}>Nos thématiques&nbsp;:</p>
+		<ul class="mt-2 list-disc space-y-1 pl-5 marker:text-accent-text" aria-labelledby={themesId}>
+			{atelier.themes.map((theme) => <li>{theme}</li>)}
+		</ul>
+	</div>
 
+	{/* Toujours présent : la ligne reste réservée même sans fiche validée. */}
+	<div>
 	{
 		facts.length > 0 && (
 			<dl class="mt-6 grid gap-2 rounded-lg bg-surface p-4">
@@ -63,6 +76,7 @@ const themesId = `${atelier.slug}-themes`;
 			</dl>
 		)
 	}
+	</div>
 
 	<p class="mt-auto pt-5">
 		<Cta href={`/contact/?activite=${atelier.slug}#contact-form`} variant="link">
@@ -70,3 +84,20 @@ const themesId = `${atelier.slug}-themes`;
 		</Cta>
 	</p>
 </article>
+
+<style>
+	.atelier {
+		display: flex;
+		flex-direction: column;
+	}
+	/* Lignes partagées : photo, titre, accroche, thématiques, fiche et lien alignés entre colonnes. */
+	@supports (grid-template-rows: subgrid) {
+		@media (min-width: 64rem) {
+			.atelier {
+				display: grid;
+				grid-row: span 6;
+				grid-template-rows: subgrid;
+			}
+		}
+	}
+</style>

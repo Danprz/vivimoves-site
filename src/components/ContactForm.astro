@@ -1,14 +1,14 @@
 ---
 import { activities } from '../data/activities';
 import { ateliers } from '../data/ateliers';
-import { FORMSPREE_ENDPOINT, CONTACT_EMAIL } from '../consts';
+import { FORMSPREE_ENDPOINT, CONTACT_EMAIL, SITE_TITLE } from '../consts';
 ---
 
 <div id="contact-form" class="contact-form">
 	<form action={FORMSPREE_ENDPOINT} method="POST" class="grid gap-6" data-contact-form>
 		<p class="text-ink-soft">Les champs sont obligatoires, sauf mention contraire.</p>
 
-		<input type="hidden" name="_subject" value="Nouvelle demande entreprise — site Vivimoves" />
+		<input type="hidden" name="_subject" value={`Nouvelle demande entreprise — site ${SITE_TITLE}`} />
 		<p class="hp" aria-hidden="true">
 			<label>Ne pas remplir ce champ <input type="text" name="_gotcha" tabindex="-1" autocomplete="off" /></label>
 		</p>

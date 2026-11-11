@@ -1,0 +1,31 @@
+{
+  "createdOn": "2026-11-11",
+  "generator": "Built-in image_gen tool",
+  "useCase": "photorealistic-natural",
+  "purpose": "Additional small service image options: a meeting room for ateliers and an outdoor farm setting with exercise mats for mini-retraites. No people.",
+  "format": "webp",
+  "width": 768,
+  "height": 576,
+  "aspectRatio": "4:3",
+  "webpQuality": 84,
+  "images": [
+    {
+      "file": "src/assets/entreprises/format-mini-retraites-ferme.webp",
+      "service": "mini-retraites",
+      "width": 768,
+      "height": 576,
+      "bytes": 131452,
+      "alt": "Tapis de mouvement au sol dans la cour extérieure d’une ferme, prêts pour une mini-retraite d’équipe.",
+      "prompt": "Use case: photorealistic-natural.\nAsset type: small photographic service card image for Vivimoves, a French workplace wellbeing website. Generate ONE standalone landscape photograph, 4:3, not a collage. Luminous natural daylight, inviting warm cream, oak and sand with subtle ochre, realistic architectural and material details. Simple readable composition for a small 768x576 website image, uncluttered with comfortable crop margins. STRICTLY NO PEOPLE: no humans, body parts, silhouettes, human shadows, printed portraits or people in mirrors, glazing or reflections. No readable text, lettering, branding, logos, watermark, labels, UI or borders. Any notebooks or presentation surfaces are completely blank.\nPrimary request: an EMPTY OUTDOOR SETTING AT A FRENCH FERME prepared for a team mini-retreat, with EXERCISE MATS LAID FLAT ON THE GROUND. A modest authentic warm limestone farmhouse and weathered timber barn doors frame a sunlit farm courtyard or flat grass verge. Four sand and muted terracotta exercise mats are visibly unrolled and spaced naturally on a clean flat short-grass area in the foreground, each with a simple cork block at one end. Low diagonal wide view: show the mats clearly, the rustic farmhouse architecture in the middle ground, and a broad patch of pale blue sky above. Bright gentle late-morning daylight, peaceful rural atmosphere, a little meadow vegetation at the edges, no dense forest, no decorative plant jungle. The place should read as a welcoming countryside ferme, not a luxury spa or a city rooftop. No people, animals, vehicles or machinery, no indoor room. Realistic safe level ground and restrained practical setup."
+    },
+    {
+      "file": "src/assets/entreprises/format-ateliers-salle-reunion.webp",
+      "service": "ateliers",
+      "width": 768,
+      "height": 576,
+      "bytes": 67546,
+      "alt": "Salle de réunion lumineuse préparée pour un atelier de bien-être, avec table, chaises et carnets.",
+      "prompt": "Use case: photorealistic-natural.\nAsset type: small photographic service card image for Vivimoves, a French workplace wellbeing website. Generate ONE standalone landscape photograph, 4:3, not a collage. Luminous natural daylight, inviting warm cream, oak and sand with subtle ochre, realistic architectural and material details. Simple readable composition for a small 768x576 website image, uncluttered with comfortable crop margins. STRICTLY NO PEOPLE: no humans, body parts, silhouettes, human shadows, printed portraits or people in mirrors, glazing or reflections. No readable text, lettering, branding, logos, watermark, labels, UI or borders. Any notebooks or presentation surfaces are completely blank.\nPrimary request: an inviting EMPTY SALLE DE RÉUNION, clearly recognizable as a contemporary French workplace meeting room prepared for a wellbeing workshop. Medium-wide view from one corner showing the complete pale oak rectangular meeting table with six simple upholstered chairs around it, cream walls, a large bright window and one plain blank whiteboard on the wall. On the table, only a clear water carafe, a few water glasses and two blank closed notebooks. A discreet ochre chair or cushion provides warmth; very little greenery. This is a real professional meeting space with a calm approachable atmosphere, not an auditorium, yoga studio or restaurant. No exercise mats, no food display, no people anywhere. Strong clear architectural composition."
+    }
+  ]
+}

@@ -1,16 +1,15 @@
 ---
 import BaseLayout from '../layouts/BaseLayout.astro';
 import Cta from '../components/Cta.astro';
-import AboutBand from '../components/AboutBand.astro';
 import ContactBand from '../components/ContactBand.astro';
 import KeyFigures from '../components/KeyFigures.astro';
 import PracticeTile from '../components/PracticeTile.astro';
 import AtelierBlock from '../components/AtelierBlock.astro';
-import ReviewQuote from '../components/ReviewQuote.astro';
+import GoogleReview from '../components/GoogleReview.astro';
 import { activities } from '../data/activities';
 import { ateliers } from '../data/ateliers';
 import { reviewFor } from '../data/reviews';
-import { ZONE_SENTENCE } from '../consts';
+import { SITE_TITLE, ZONE_SENTENCE } from '../consts';
 
 // Un exemple adaptable : ni horaires, ni lieu, ni nombre de participants.
 const retreatSteps = [
@@ -22,7 +21,7 @@ const retreatSteps = [
 ---
 
 <BaseLayout
-	title="Bien-être en entreprise : cours, ateliers et mini-retraites · Vivimoves"
+	title={`Bien-être en entreprise : cours, ateliers et mini-retraites · ${SITE_TITLE}`}
 	description="Cours réguliers de yoga, Pilates, running ou gym posturale, ateliers bien-être et mini-retraites d’équipe à Cergy et dans le Val-d’Oise."
 >
 	<section class="wrap pt-12 pb-16 md:pt-20 md:pb-24">
@@ -63,15 +62,9 @@ const retreatSteps = [
 				}
 			</ul>
 			<p class="mt-6 text-[0.9375rem] text-ink-soft">Images d’illustration.</p>
-			<div class="mt-12 grid gap-12 md:grid-cols-[1fr_1.4fr] md:items-start md:gap-16">
-				<p>
-					<Cta href="/contact/#contact-form">Mettre en place un cours régulier</Cta>
-				</p>
-				<ReviewQuote
-					review={reviewFor('entreprises')}
-					intro="Ce que disent les participants à nos cours"
-				/>
-			</div>
+			<p class="mt-12">
+				<Cta href="/contact/#contact-form">Mettre en place un cours régulier</Cta>
+			</p>
 		</div>
 	</section>
 
@@ -84,9 +77,10 @@ const retreatSteps = [
 					Trois ateliers au choix&nbsp;:
 				</p>
 			</div>
-			<div class="mt-12 grid gap-12 lg:grid-cols-3 lg:gap-10">
+			<div class="mt-12 grid gap-12 lg:grid-cols-3 lg:gap-x-10 lg:gap-y-0">
 				{ateliers.map((atelier) => <AtelierBlock atelier={atelier} />)}
 			</div>
+			<p class="mt-8 text-[0.9375rem] text-ink-soft">Images d’illustration.</p>
 		</div>
 	</section>
 
@@ -125,7 +119,7 @@ const retreatSteps = [
 		</div>
 	</section>
 
-	<AboutBand showFacilitator />
+	<GoogleReview review={reviewFor('entreprises')} intro="Ce que disent les participants à nos cours" />
 	<ContactBand
 		title="Parlons de votre équipe"
 		text="Décrivez-nous votre contexte, même en quelques lignes. On construit le reste ensemble."

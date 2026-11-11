@@ -3,6 +3,7 @@ import BaseLayout from '../layouts/BaseLayout.astro';
 import ContactForm from '../components/ContactForm.astro';
 import ExternalLink from '../components/ExternalLink.astro';
 import {
+	SITE_TITLE,
 	CONTACT_EMAIL,
 	BOOKWHEN_URL,
 	VIRGINIA_INSTAGRAM_URL,
@@ -12,7 +13,7 @@ import {
 ---
 
 <BaseLayout
-	title="Contact · Parlons de votre équipe · Vivimoves"
+	title={`Contact · Parlons de votre équipe · ${SITE_TITLE}`}
 	description="Un projet de cours, d’atelier ou de mini-retraite pour votre équipe ? Écrivez-nous pour en parler."
 >
 	<section class="wrap contact-grid pt-12 pb-20 md:pt-20 md:pb-28">
@@ -33,7 +34,7 @@ import {
 		<div class="contact-aside">
 			<div class="border-t border-line-strong pt-6">
 				<h2 class="text-xl tracking-normal">Votre interlocutrice</h2>
-				<p class="mt-2">Virginia, fondatrice de Vivimoves, coach sportive diplômée d’État.</p>
+				<p class="mt-2">Virginia, fondatrice de Bliss, coach sportive diplômée d’État.</p>
 				<ul class="mt-2">
 					<li><a class="text-link" href={`mailto:${CONTACT_EMAIL}`}>Écrire un e-mail</a></li>
 					<li><ExternalLink class="text-link" href={VIRGINIA_LINKEDIN_URL}>LinkedIn</ExternalLink></li>

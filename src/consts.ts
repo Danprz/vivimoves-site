@@ -1,6 +1,6 @@
 // Données globales du site.
 
-export const SITE_TITLE = 'Vivimoves';
+export const SITE_TITLE = 'Bliss';
 export const SITE_DESCRIPTION =
 	'Cours, ateliers et mini-retraites d’équipe pour les entreprises du Val-d’Oise : yoga, Pilates, running, gym posturale, méditation et bains sonores.';
 

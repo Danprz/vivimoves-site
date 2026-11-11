@@ -2,7 +2,7 @@
 import BaseLayout from '../layouts/BaseLayout.astro';
 import Cta from '../components/Cta.astro';
 import ExternalLink from '../components/ExternalLink.astro';
-import ReviewQuote from '../components/ReviewQuote.astro';
+import GoogleReview from '../components/GoogleReview.astro';
 import { Image } from 'astro:assets';
 import tshirt from '../assets/club-tshirt.jpg';
 import seanceTerrasse from '../assets/club-seance-terrasse.jpg';
@@ -70,7 +70,6 @@ const spirit = [
 				))
 			}
 		</ul>
-		<ReviewQuote class="mt-14" review={reviewFor('le-pr-club')} />
 	</section>
 
 	<section class="bg-sunk">
@@ -84,7 +83,7 @@ const spirit = [
 				loading="lazy"
 			/>
 			<div>
-				<h2>Envie de venir ?</h2>
+				<h2>Rejoignez le mouvement</h2>
 				<p class="mt-5 measure">
 					La programmation évolue au fil des saisons. Consultez l’agenda pour voir ce qui est
 					ouvert à la réservation ; s’il n’y a rien pour l’instant, suivez le club sur
@@ -107,9 +106,9 @@ const spirit = [
 			<h2>Qui est derrière le club ?</h2>
 			<p class="mt-5 measure">
 				Le PR Club a été fondé par Virginia, coach sportive diplômée d’État. Il fait partie de
-				Vivimoves, qui propose aussi des activités de bien-être aux entreprises du Val-d’Oise.
+				Bliss, qui propose aussi des activités de bien-être aux entreprises du Val-d’Oise.
 			</p>
-			<p class="mt-4"><Cta href="/a-propos/" variant="link">Découvrir Vivimoves</Cta></p>
+			<p class="mt-4"><Cta href="/a-propos/" variant="link">Découvrir Bliss</Cta></p>
 		</div>
 		<Image
 			src={reformer}
@@ -121,12 +120,14 @@ const spirit = [
 		/>
 	</section>
 
+	<GoogleReview review={reviewFor('le-pr-club')} tone="sunk" />
+
 	<section class="on-dark bg-ink text-page">
 		<div class="wrap section grid gap-8 md:grid-cols-[1.5fr_1fr] md:items-end">
 			<div>
 				<h2>Vous cherchez une activité pour votre équipe ?</h2>
 				<p class="lede mt-4 text-on-dark-soft">
-					Vivimoves intervient aussi en entreprise : cours réguliers, ateliers et
+					Bliss intervient aussi en entreprise : cours réguliers, ateliers et
 					mini-retraites d’équipe.
 				</p>
 			</div>

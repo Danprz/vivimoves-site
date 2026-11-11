@@ -1,3 +1,8 @@
+import type { ImageMetadata } from 'astro';
+import corpsAuBureau from '../assets/entreprises/atelier-mon-corps-au-bureau.webp';
+import mieuxManger from '../assets/entreprises/atelier-mieux-manger-au-travail.webp';
+import mieuxDormir from '../assets/entreprises/atelier-mieux-dormir-recuperer.webp';
+
 /**
  * Fiche pratique d’un atelier. Chaque valeur doit avoir été validée par Virginia ;
  * une valeur absente n’est pas affichée.
@@ -16,6 +21,9 @@ export interface Atelier {
 	pitch: string;
 	themes: string[];
 	facts: AtelierFacts;
+	/** Illustration générée, sans personnes. */
+	image: ImageMetadata;
+	alt: string;
 }
 
 // Validé par Virginia le 2026-11-11 pour les trois ateliers.
@@ -39,6 +47,8 @@ export const ateliers: Atelier[] = [
 			'Construire sa routine de la semaine',
 		],
 		facts,
+		image: corpsAuBureau,
+		alt: 'Poste de travail avec chaise réglable, écran surélevé et repose-pieds, près d’une fenêtre.',
 	},
 	{
 		slug: 'atelier-nutrition',
@@ -53,6 +63,8 @@ export const ateliers: Atelier[] = [
 			'Manger en déplacement ou en télétravail',
 		],
 		facts,
+		image: mieuxManger,
+		alt: 'Déjeuner préparé sur un bureau : quinoa, pois chiches et légumes, avec une pomme, des noix et de l’eau.',
 	},
 	{
 		slug: 'atelier-sommeil',
@@ -67,5 +79,7 @@ export const ateliers: Atelier[] = [
 			'Micro-pauses et récupération au travail',
 		],
 		facts,
+		image: mieuxDormir,
+		alt: 'Table de chevet avec lampe douce, masque de nuit posé sur un livre fermé et téléphone retourné.',
 	},
 ];

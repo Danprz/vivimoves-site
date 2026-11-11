@@ -1,7 +1,7 @@
 schema: spec-driven
 
 context: |
-  Vivimoves es la web de una empresa local de bienestar y movimiento en
+  Bliss (antes Vivimoves) es la web de una empresa local de bienestar y movimiento en
   empresa (Cergy, Val-d'Oise), con Le PR Club como actividad colectiva
   secundaria. Ya no ofrece coaching individual ni publica precios. Los textos
   hablan en «nous». El sitio se despliega en Vercel.

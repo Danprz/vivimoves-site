@@ -1,88 +1,126 @@
 ---
 import BaseLayout from '../layouts/BaseLayout.astro';
 import Cta from '../components/Cta.astro';
-import AboutBand from '../components/AboutBand.astro';
 import ContactBand from '../components/ContactBand.astro';
 import FormatsBand from '../components/FormatsBand.astro';
 import ProjectSteps from '../components/ProjectSteps.astro';
-import ReviewQuote from '../components/ReviewQuote.astro';
+import GoogleReview from '../components/GoogleReview.astro';
 import { Image } from 'astro:assets';
-import clubPhoto from '../assets/club-plein-air.jpg';
+import heroPhoto from '../assets/entreprises/hero-terrasse-coach-03.webp';
+import clubPhoto from '../assets/club-seance-terrasse.jpg';
 import { reviewFor } from '../data/reviews';
-import { SITE_DESCRIPTION } from '../consts';
+import { SITE_DESCRIPTION, SITE_TITLE } from '../consts';
 ---
 
-<BaseLayout title="Vivimoves · Mouvement et bien-être en entreprise" description={SITE_DESCRIPTION}>
-	<section class="wrap grid gap-10 pt-12 pb-16 md:grid-cols-[1.25fr_1fr] md:items-stretch md:gap-14 md:pt-20 md:pb-24">
-		<div class="flex flex-col justify-center">
-			<h1>Le mouvement a toute sa place au travail.</h1>
-			<p class="lede mt-6">
-				Vivimoves propose aux entreprises du Val-d’Oise des cours, des ateliers et des
-				mini-retraites d’équipe, pour que vos salariés puissent bouger, respirer et faire une
-				vraie pause.
-			</p>
-			<div class="mt-8 flex flex-wrap items-center gap-x-6 gap-y-3">
-				<Cta href="/contact/">Parlons de votre équipe</Cta>
-				<Cta href="/entreprises/" variant="link">Découvrir les interventions</Cta>
+<BaseLayout title={`${SITE_TITLE} · Mouvement et bien-être en entreprise`} description={SITE_DESCRIPTION}>
+	<section class="hero on-dark">
+		<Image
+			src={heroPhoto}
+			alt=""
+			widths={[640, 960, 1280, 1672]}
+			sizes="100vw"
+			class="hero-photo"
+			loading="eager"
+			fetchpriority="high"
+		/>
+		<div class="hero-veil" aria-hidden="true"></div>
+		<div class="wrap hero-content">
+			<div class="hero-text">
+				<p class="hero-brand">{SITE_TITLE}</p>
+				<h1 class="mt-4">Le bien-être par le mouvement, au cœur de vos équipes</h1>
+				<p class="lede mt-6">
+					{SITE_TITLE} vous propose des solutions clés en main pour offrir à vos équipes de vraies
+					pauses bien-être, dans le Val-d’Oise.
+				</p>
+				<p class="mt-8">
+					<Cta href="/entreprises/">Découvrir nos solutions</Cta>
+				</p>
 			</div>
-		</div>
-		<div class="on-accent hero-panel" aria-hidden="true">
-			<span class="sun"></span>
-			<p>Cergy · Val-d’Oise (95)</p>
+			<p class="hero-credit">Image d’illustration</p>
 		</div>
 	</section>
 
 	<FormatsBand />
 
-	<ProjectSteps>
-		<ReviewQuote class="mt-14" review={reviewFor('accueil')} />
-	</ProjectSteps>
+	<ProjectSteps />
+
+	<GoogleReview review={reviewFor('accueil')} tone="sunk" />
 
 	<section class="on-accent bg-action">
 		<div class="wrap section grid gap-10 md:grid-cols-2 md:items-center md:gap-16">
 			<Image
 				src={clubPhoto}
-				alt="Séance de Pilates du PR Club en plein air : quatre personnes assises sur des tapis dans l’herbe."
+				alt="Séance de Pilates du PR Club en plein air : une quinzaine de personnes sur des tapis, sur une terrasse en bois au bord de l’eau."
 				widths={[480, 768, 1024]}
 				sizes="(min-width: 48rem) 34rem, 100vw"
-				class="aspect-[4/3] w-full rounded-lg border-2 border-ink object-cover"
+				class="aspect-[3/2] w-full rounded-lg border-2 border-ink object-cover"
 				loading="lazy"
 			/>
 			<div>
-				<h2>Le PR Club</h2>
+				<h2>Communauté</h2>
 				<p class="lede mt-5">
-					Envie de courir ou de pratiquer le Pilates en groupe ? Le PR Club réunit celles et
+					Envie de courir ou de pratiquer le Pilates en groupe ? Le PR Club réunit celles et
 					ceux qui aiment bouger ensemble dans le Val-d’Oise.
 				</p>
 				<p class="mt-6">
-					<Cta href="/le-pr-club/" variant="secondary">Découvrir Le PR Club</Cta>
+					<Cta href="/le-pr-club/" variant="secondary">Découvrir la communauté</Cta>
 				</p>
 			</div>
 		</div>
 	</section>
 
-	<AboutBand />
 	<ContactBand />
 </BaseLayout>
 
 <style>
-	.hero-panel {
-		display: flex;
-		flex-direction: column;
-		justify-content: space-between;
-		gap: 2rem;
-		min-height: 14rem;
-		padding: clamp(1.5rem, 4vw, 2.5rem);
-		background: var(--color-action);
-		border: 2px solid var(--color-ink);
-		border-radius: 0.75rem;
-		font-weight: 700;
-	}
-	.sun {
-		width: clamp(7rem, 22vw, 13rem);
-		aspect-ratio: 1;
+	/* Photographie à fond perdu, voile ink uniforme : le contraste ne dépend pas du recadrage. */
+	.hero {
+		position: relative;
+		isolation: isolate;
+		overflow: hidden;
 		background: var(--color-ink);
-		-webkit-mask: url('/soleil.svg') center / contain no-repeat;
-		mask: url('/soleil.svg') center / contain no-repeat;
+		color: var(--color-page);
+	}
+	.hero-photo {
+		position: absolute;
+		inset: 0;
+		z-index: -2;
+		width: 100%;
+		height: 100%;
+		object-fit: cover;
+		object-position: 50% 50%;
+	}
+	.hero-veil {
+		position: absolute;
+		inset: 0;
+		z-index: -1;
+		background: color-mix(in srgb, var(--color-ink) 72%, transparent);
+	}
+	.hero-content {
+		display: grid;
+		grid-template-rows: 1fr auto;
+		gap: 2rem;
+		min-height: min(78svh, 44rem);
+		padding-block: clamp(3rem, 8vw, 5.5rem) 1.25rem;
+	}
+	.hero-text {
+		align-self: center;
+		max-width: 40rem;
+	}
+	.hero-brand {
+		color: var(--color-action);
+		font-weight: 700;
+		font-size: clamp(3rem, 2rem + 4.5vw, 5.5rem);
+		line-height: 1;
+		letter-spacing: -0.03em;
+	}
+	/* La marque domine le bloc ; le titre reste le h1, à l’échelle d’un h2. */
+	.hero h1 {
+		font-size: clamp(1.75rem, 1.3rem + 2vw, 2.75rem);
+		line-height: 1.15;
+	}
+	.hero-credit {
+		justify-self: end;
+		font-size: 0.875rem;
 	}
 </style>

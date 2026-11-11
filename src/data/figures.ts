@@ -1,7 +1,7 @@
 /**
  * Chiffres de contexte du premier bloc de /entreprises/.
  * Chaque chiffre a été vérifié dans sa publication d’origine le 2026-11-11 :
- * aucun chiffre sans source, aucun montant en euros, aucun résultat attribué à Vivimoves.
+ * aucun chiffre sans source, aucun montant en euros, aucun résultat attribué à Bliss.
  */
 export interface KeyFigure {
 	value: string;
