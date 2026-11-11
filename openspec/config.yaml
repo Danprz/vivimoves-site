@@ -1,0 +1,61 @@
+schema: spec-driven
+
+context: |
+  Vivimoves es la web de una empresa local de bienestar y movimiento en
+  empresa (Cergy, Val-d'Oise), con Le PR Club como actividad colectiva
+  secundaria. Ya no ofrece coaching individual ni publica precios. Los textos
+  hablan en «nous». El sitio se despliega en Vercel.
+  Mantener el stack actual: Astro 5, módulos ESM, TypeScript con la
+  configuración estricta de Astro y Tailwind CSS 4 integrado mediante
+  @tailwindcss/vite. Usar npm y conservar package-lock.json.
+
+  Priorizar la generación estática y los componentes .astro. Añadir JavaScript
+  en el navegador solo cuando la interacción lo requiera. No introducir
+  React, Vue, Svelte, SSR, adaptadores de servidor, backend o bases de datos
+  sin justificar la necesidad y explicitar el cambio de arquitectura.
+
+  Reutilizar BaseHead, Header, Footer y los layouts existentes. Mantener las
+  rutas basadas en archivos de src/pages, los estilos globales de
+  src/styles/global.css y los estilos encapsulados de Astro. Usar Tailwind 4
+  con su importación CSS; no introducir configuración propia de Tailwind 3.
+  Usar los tokens de color de src/styles/global.css (mostaza, crema, casi
+  negro; ver DESIGN.md) y no fijar colores sueltos en las páginas.
+
+  Mantener Markdown/MDX y las Content Collections de Astro con glob y el
+  esquema de frontmatter de src/content.config.ts. Conservar las integraciones
+  @astrojs/mdx, @astrojs/rss y @astrojs/sitemap cuando se modifique contenido,
+  rutas o metadatos. Mantener coherentes las URLs canónicas, el sitemap y RSS.
+  El formulario de contacto usa Formspree; reutilizar esa integración para
+  cambios del formulario salvo que el alcance requiera sustituirla.
+
+  Redactar los artefactos de OpenSpec en español, conservando los encabezados
+  y las palabras clave que exija el esquema. Mantener en francés los textos
+  públicos de la web y lang="fr" en las páginas correspondientes.
+  Priorizar HTML semántico, accesibilidad por teclado y diseño responsive.
+
+rules:
+  proposal:
+    - Delimitar el alcance y explicar cómo se resuelve con el stack existente.
+    - Justificar cualquier dependencia nueva, actualización mayor o cambio de arquitectura.
+  design:
+    - Identificar las páginas, componentes, estilos y colecciones afectados, y reutilizar los existentes cuando corresponda.
+    - Explicar cualquier JavaScript cliente necesario y su impacto en la generación estática y el rendimiento.
+    - Contemplar accesibilidad, responsive y SEO cuando el cambio los afecte.
+  specs:
+    - Describir comportamientos observables con requisitos y escenarios verificables, respetando el formato del esquema.
+    - Incluir escenarios de navegación, contenido en francés y accesibilidad cuando sean relevantes para el cambio.
+  tasks:
+    - Definir tareas concretas con criterios de finalización verificables.
+    - Incluir npm run build para cambios de código o configuración de Astro.
+    - Incluir comprobaciones manuales de las rutas e interacciones afectadas en móvil y escritorio cuando haya cambios visibles.
+    - No asumir scripts de test, lint o typecheck que no estén definidos en package.json; astro build no sustituye la comprobación de tipos.
+
+operations:
+  apply:
+    guidance:
+      - Mantener los cambios dentro del alcance y evitar dependencias innecesarias.
+      - No editar dist/, .astro/ ni node_modules/ como fuentes del proyecto.
+      - Informar de las comprobaciones realizadas y de cualquier limitación de validación.
+  archive:
+    guidance:
+      - Resumir el cambio y la validación realizada, indicando cualquier tarea pendiente.

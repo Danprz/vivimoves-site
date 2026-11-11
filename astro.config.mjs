@@ -7,12 +7,17 @@ import tailwindcss from '@tailwindcss/vite';
 
 // https://astro.build/config
 export default defineConfig({
-  site: 'https://example.com',
+  site: 'https://vivimoves-site.vercel.app',
   integrations: [mdx(), sitemap()],
+
+  // Repli statique hors Vercel ; en production, vercel.json émet des redirections HTTP 308.
+  redirects: {
+    '/services': '/entreprises/',
+    '/tarifs-coaching': '/entreprises/',
+    '/pilates-plein-air': '/le-pr-club/',
+  },
 
   vite: {
     plugins: [tailwindcss()],
   },
 });
-
-  

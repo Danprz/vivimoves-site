@@ -1,47 +1,61 @@
 ---
-const today = new Date();
+import ExternalLink from './ExternalLink.astro';
+import {
+	SITE_TITLE,
+	CONTACT_EMAIL,
+	PR_CLUB_INSTAGRAM_URL,
+	VIRGINIA_INSTAGRAM_URL,
+	VIRGINIA_LINKEDIN_URL,
+	ZONE_SENTENCE,
+} from '../consts';
+
+const year = new Date().getFullYear();
 ---
 
-<footer>
-  <p class="footer-brand">
-    &copy; {today.getFullYear()} Virginia Moves. Tous droits réservés.
-  </p>
-  <p class="footer-credit">
-    Made by <span class="footer-credit-name">Daniprz</span>
-  </p>
+<footer class="on-dark bg-ink text-page">
+	<div class="wrap grid gap-10 py-14 md:grid-cols-[1.4fr_1fr_1fr]">
+		<div>
+			<p class="text-xl font-bold">{SITE_TITLE}</p>
+			<p class="mt-3 max-w-sm text-on-dark-soft">
+				Bien-être et mouvement en entreprise. {ZONE_SENTENCE}
+			</p>
+		</div>
+		<nav aria-label="Pied de page">
+			<h2 class="text-base tracking-normal">Le site</h2>
+			<ul class="mt-2">
+				<li><a class="foot-link" href="/entreprises/">Entreprises</a></li>
+				<li><a class="foot-link" href="/le-pr-club/">Le PR Club</a></li>
+				<li><a class="foot-link" href="/a-propos/">À propos</a></li>
+				<li><a class="foot-link" href="/contact/">Contact</a></li>
+			</ul>
+		</nav>
+		<div>
+			<h2 class="text-base tracking-normal">Nous joindre</h2>
+			<ul class="mt-2">
+				<li><a class="foot-link" href={`mailto:${CONTACT_EMAIL}`}>Écrire un e-mail</a></li>
+				<li><ExternalLink class="foot-link" href={VIRGINIA_LINKEDIN_URL}>LinkedIn</ExternalLink></li>
+				<li><ExternalLink class="foot-link" href={VIRGINIA_INSTAGRAM_URL}>Instagram</ExternalLink></li>
+				<li><ExternalLink class="foot-link" href={PR_CLUB_INSTAGRAM_URL}>Instagram du PR Club</ExternalLink></li>
+			</ul>
+		</div>
+	</div>
+	<div class="wrap flex flex-wrap justify-between gap-x-6 gap-y-1 border-t border-ink-soft py-5 text-[0.9375rem] text-on-dark-soft">
+		<p>© {year} {SITE_TITLE}</p>
+		<p>Site réalisé par Daniprz</p>
+	</div>
 </footer>
 
 <style>
-  footer {
-    padding: 2em 1em 4em 1em;
-    background: var(--clr-50);
-    color: var(--clr-900);
-    text-align: center;
-    font-size: 0.95rem;
-  }
-
-  .footer-brand {
-    margin: 0 0 .25rem 0;
-    font-weight: 500;
-  }
-
-  .footer-credit {
-    margin: 0;
-    font-size: 0.85rem;
-    opacity: 0.8;
-  }
-
-  .footer-credit-name {
-    font-weight: 600;
-  }
-
-  @media (max-width: 640px) {
-    footer {
-      padding-bottom: 3em;
-      font-size: 0.9rem;
-    }
-    .footer-credit {
-      font-size: 0.8rem;
-    }
-  }
+	.foot-link {
+		display: inline-flex;
+		align-items: center;
+		gap: 0.35rem;
+		min-height: 2.75rem;
+		text-decoration: underline;
+		text-decoration-color: transparent;
+		transition: text-decoration-color 0.18s var(--ease-out-expo);
+	}
+	.foot-link:hover {
+		text-decoration-color: var(--color-action);
+	}
 </style>

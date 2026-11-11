@@ -1,0 +1,146 @@
+---
+import BaseLayout from '../layouts/BaseLayout.astro';
+import Cta from '../components/Cta.astro';
+import ExternalLink from '../components/ExternalLink.astro';
+import { Image } from 'astro:assets';
+import tshirt from '../assets/club-tshirt.jpg';
+import pleinAir from '../assets/club-plein-air.jpg';
+import reformer from '../assets/club-reformer.jpg';
+import { BOOKWHEN_URL, PR_CLUB_INSTAGRAM_URL } from '../consts';
+
+const spirit = [
+	{ title: 'Courir', text: 'Des sorties running à partager, pour le plaisir de courir à plusieurs.' },
+	{ title: 'Pratiquer le Pilates', text: 'Des séances collectives pour se renforcer et respirer.' },
+	{ title: 'Se retrouver', text: 'Des rendez-vous et des événements qui font vivre le groupe.' },
+];
+---
+
+<BaseLayout
+	tone="club"
+	title="Le PR Club · Pilates et running dans le Val-d’Oise"
+	description="Sorties running, séances de Pilates et rendez-vous collectifs. Consultez l’agenda et réservez sur Bookwhen, suivez le club sur Instagram."
+>
+	<section class="on-accent bg-action">
+		<div class="wrap grid gap-10 pt-12 pb-16 md:grid-cols-[1.3fr_1fr] md:items-center md:gap-14 md:pt-20 md:pb-24">
+			<div>
+				<h1>Le PR Club&nbsp;: on bouge ensemble</h1>
+				<p class="lede mt-6">
+					Des sorties running, des séances de Pilates et des rendez-vous à partager dans le
+					Val-d’Oise. Ici, on vient pour bouger, pour le plaisir et pour le groupe.
+				</p>
+				<div class="mt-8 flex flex-wrap items-center gap-x-6 gap-y-3">
+					<ExternalLink class="btn btn-secondary club-primary" href={BOOKWHEN_URL}>
+						Voir les prochaines séances
+					</ExternalLink>
+					<ExternalLink class="text-link" href={PR_CLUB_INSTAGRAM_URL}>
+						Suivre le club sur Instagram
+					</ExternalLink>
+				</div>
+				<p class="mt-4 max-w-md text-[0.9375rem]">
+					Dates, disponibilités, conditions et réservations : tout se passe sur Bookwhen.
+				</p>
+			</div>
+			<Image
+				src={tshirt}
+				alt="T-shirt blanc du PR Club portant l’inscription « Le PR Club, Pilates & Running Club, Cergy-Pontoise »."
+				widths={[400, 640, 960]}
+				sizes="(min-width: 48rem) 26rem, 100vw"
+				class="aspect-[4/5] w-full rounded-lg border-2 border-ink object-cover object-top"
+				loading="eager"
+				fetchpriority="high"
+			/>
+		</div>
+	</section>
+
+	<section class="wrap section">
+		<h2>L’esprit du club</h2>
+		<p class="lede mt-5">
+			Plus qu’un cours, une communauté : un endroit où l’on bouge ensemble, sans compétition,
+			pour le plaisir de progresser à son rythme.
+		</p>
+		<ul class="mt-10 grid gap-8 md:grid-cols-3 md:gap-10">
+			{
+				spirit.map((item) => (
+					<li class="border-t-2 border-ink pt-5">
+						<h3>{item.title}</h3>
+						<p class="mt-3 text-ink-soft">{item.text}</p>
+					</li>
+				))
+			}
+		</ul>
+	</section>
+
+	<section class="bg-sunk">
+		<div class="wrap section grid gap-10 md:grid-cols-2 md:items-center md:gap-16">
+			<Image
+				src={pleinAir}
+				alt="Séance de Pilates du PR Club en plein air : quatre personnes assises sur des tapis dans l’herbe."
+				widths={[480, 768, 1024]}
+				sizes="(min-width: 48rem) 34rem, 100vw"
+				class="aspect-[4/3] w-full rounded-lg object-cover"
+				loading="lazy"
+			/>
+			<div>
+				<h2>Envie de venir ?</h2>
+				<p class="mt-5 measure">
+					La programmation évolue au fil des saisons. Consultez l’agenda pour voir ce qui est
+					ouvert à la réservation ; s’il n’y a rien pour l’instant, suivez le club sur
+					Instagram pour connaître les prochains rendez-vous.
+				</p>
+				<div class="mt-6 flex flex-wrap items-center gap-x-6 gap-y-3">
+					<ExternalLink class="btn btn-primary" href={BOOKWHEN_URL}>
+						Ouvrir l’agenda Bookwhen
+					</ExternalLink>
+					<ExternalLink class="text-link" href={PR_CLUB_INSTAGRAM_URL}>
+						Instagram du PR Club
+					</ExternalLink>
+				</div>
+			</div>
+		</div>
+	</section>
+
+	<section class="wrap section grid gap-10 md:grid-cols-2 md:items-center md:gap-16">
+		<div>
+			<h2>Qui est derrière le club ?</h2>
+			<p class="mt-5 measure">
+				Le PR Club a été fondé par Virginia, coach sportive diplômée d’État. Il fait partie de
+				Vivimoves, qui propose aussi des activités de bien-être aux entreprises du Val-d’Oise.
+			</p>
+			<p class="mt-4"><Cta href="/a-propos/" variant="link">Découvrir Vivimoves</Cta></p>
+		</div>
+		<Image
+			src={reformer}
+			alt="Une pratiquante de dos sur un reformer de Pilates, vêtue du t-shirt du PR Club."
+			widths={[480, 768, 1200]}
+			sizes="(min-width: 48rem) 34rem, 100vw"
+			class="aspect-[16/10] w-full rounded-lg object-cover"
+			loading="lazy"
+		/>
+	</section>
+
+	<section class="on-dark bg-ink text-page">
+		<div class="wrap section grid gap-8 md:grid-cols-[1.5fr_1fr] md:items-end">
+			<div>
+				<h2>Vous cherchez une activité pour votre équipe ?</h2>
+				<p class="lede mt-4 text-on-dark-soft">
+					Vivimoves intervient aussi en entreprise : cours réguliers, ateliers et
+					mini-retraites d’équipe.
+				</p>
+			</div>
+			<p class="md:justify-self-end">
+				<Cta href="/entreprises/">Découvrir les interventions en entreprise</Cta>
+			</p>
+		</div>
+	</section>
+</BaseLayout>
+
+<style>
+	:global(.club-primary) {
+		background: var(--color-ink);
+		color: var(--color-page);
+	}
+	:global(.club-primary:hover) {
+		background: var(--color-page);
+		color: var(--color-ink);
+	}
+</style>

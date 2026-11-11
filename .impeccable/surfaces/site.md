@@ -1,0 +1,8 @@
+# Superficie: sitio Vivimoves (cinco páginas)
+
+- **Modo**: Persuade.
+- **Quién llega**: responsables de RR. HH., CSE y equipos del Val-d'Oise; en segundo lugar, personas interesadas en Le PR Club.
+- **Acción**: «Parlons de votre équipe» (formulario) o «Voir les prochaines séances» (Bookwhen).
+- **Dirección**: estándar del sector, elegida por Virginia; ver `DESIGN.md`.
+- **Límites**: sin precios, sin prueba social inventada, Virginia en segundo plano, solo fotografías reales, voz «nous».
+- **Modo de construcción**: code-first en esta sesión (el entorno no genera imágenes); no se registra como preferencia.

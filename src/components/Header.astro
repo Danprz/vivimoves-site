@@ -3,126 +3,160 @@ import HeaderLink from './HeaderLink.astro';
 import { SITE_TITLE } from '../consts';
 ---
 
-<header>
-	<nav>
-		<h2 class="flex items-center">
-			<a href="/" class="block">
-			  <img
-				src="/soleil.png"
-				alt={SITE_TITLE}     
-				width="50"         
-				height="15"
-				loading="eager"      
-			  />
-			</a>
-		  </h2>
-		<div class="internal-links">
-			<HeaderLink href="/">Qui suis-je ?</HeaderLink>
-			<!-- <HeaderLink href="/about">Pilates & Mobilité</HeaderLink>-->
-			<HeaderLink href="/pilates-plein-air">🌿 Pilates en plein air</HeaderLink>
-			<HeaderLink href="/tarifs-coaching">Tarifs coaching</HeaderLink>
-			<HeaderLink href="/contact">Contactez-moi</HeaderLink>
-		</div>
-		<div class="social-links">
-			<a href="https://www.instagram.com/virginia.moves/?igsh=aHF1MHl6b3VzN3p2#" target="_blank">
-				<span class="sr-only">Follow Astro on Mastodon</span>
-				<svg id="instagram"  version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" 
-				width="32" height="32" viewBox="0 0 169.063 169.063" 
-				style="enable-background:new 0 0 169.063 169.063;" xml:space="preserve"> 
-					<g>
-						<path d="M122.406,0H46.654C20.929,0,0,20.93,0,46.655v75.752c0,25.726,20.929,46.655,46.654,46.655h75.752
-								c25.727,0,46.656-20.93,46.656-46.655V46.655C169.063,20.93,148.133,0,122.406,0z M154.063,122.407
-								c0,17.455-14.201,31.655-31.656,31.655H46.654C29.2,154.063,15,139.862,15,122.407V46.655C15,29.201,29.2,15,46.654,15h75.752
-								c17.455,0,31.656,14.201,31.656,31.655V122.407z" />
-						<path d="M84.531,40.97c-24.021,0-43.563,19.542-43.563,43.563c0,24.02,19.542,43.561,43.563,43.561s43.563-19.541,43.563-43.561
-								C128.094,60.512,108.552,40.97,84.531,40.97z M84.531,113.093c-15.749,0-28.563-12.812-28.563-28.561
-								c0-15.75,12.813-28.563,28.563-28.563s28.563,12.813,28.563,28.563C113.094,100.281,100.28,113.093,84.531,113.093z" />
-						<path d="M129.921,28.251c-2.89,0-5.729,1.17-7.77,3.22c-2.051,2.04-3.23,4.88-3.23,7.78c0,2.891,1.18,5.73,3.23,7.78
-								c2.04,2.04,4.88,3.22,7.77,3.22c2.9,0,5.73-1.18,7.78-3.22c2.05-2.05,3.22-4.89,3.22-7.78c0-2.9-1.17-5.74-3.22-7.78
-								C135.661,29.421,132.821,28.251,129.921,28.251z" />
-					</g>
-				</svg>
-		</div>
-	</nav>
+<header class="site-header">
+	<div class="wrap bar">
+		<a href="/" class="brand">
+			<span class="mark" aria-hidden="true"></span>
+			{SITE_TITLE}
+		</a>
+		<button type="button" class="menu-btn" aria-expanded="false" aria-controls="nav-principale">
+			<svg class="icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" aria-hidden="true">
+				<path d="M4 7h16M4 12h16M4 17h16"></path>
+			</svg>
+			Menu
+		</button>
+		<nav id="nav-principale" aria-label="Navigation principale">
+			<ul>
+				<li><HeaderLink href="/entreprises/">Entreprises</HeaderLink></li>
+				<li><HeaderLink href="/le-pr-club/">Le PR Club</HeaderLink></li>
+				<li><HeaderLink href="/a-propos/">À propos</HeaderLink></li>
+				<li><HeaderLink href="/contact/" class="nav-cta">Contact</HeaderLink></li>
+			</ul>
+		</nav>
+	</div>
 </header>
 
+<script>
+	const button = document.querySelector<HTMLButtonElement>('.menu-btn');
+	const nav = document.getElementById('nav-principale');
+	if (button && nav) {
+		const setOpen = (open: boolean) => {
+			button.setAttribute('aria-expanded', String(open));
+			nav.toggleAttribute('data-open', open);
+		};
+		button.addEventListener('click', () => {
+			setOpen(button.getAttribute('aria-expanded') !== 'true');
+		});
+		document.addEventListener('keydown', (event) => {
+			if (event.key === 'Escape' && button.getAttribute('aria-expanded') === 'true') {
+				setOpen(false);
+				button.focus();
+			}
+		});
+		window.matchMedia('(min-width: 48rem)').addEventListener('change', () => setOpen(false));
+	}
+</script>
 
 <style>
-	header {
-	padding: 0.75rem;
-	background: var(--clr-50);
-	box-shadow: 0 2px 8px rgba(0, 0, 0, .04);
-}
-
-nav {
-	display: flex;
-	align-items: center;
-}
-
-/* Desktop */
-h2 {
-	flex: 0 0 auto;
-	margin: 0;
-}
-
-.internal-links {
-	flex: 1 1 auto;
-	display: flex;
-	justify-content: center;
-}
-
-.social-links {
-	flex: 0 0 auto;
-	margin-left: auto;
-	display: flex;
-}
-
-/* enlaces */
-nav a {
-	padding: 1rem .75rem;
-	color: var(--clr-900);
-	text-decoration: none;
-	border-bottom: 4px solid transparent;
-	transition: color .2s, border-color .2s;
-}
-
-nav a:hover {
-	color: var(--clr-600);
-}
-
-nav a.active {
-	border-bottom-color: var(--clr-400);
-}
-
-/* 💡 Mobile */
-@media (max-width: 640px) {
-	nav {
-		flex-wrap: wrap;           /* permite varias filas */
-		row-gap: 0.25rem;
+	.site-header {
+		background: var(--color-page);
+		border-bottom: 1px solid var(--color-line);
+	}
+	.bar {
+		display: flex;
+		flex-wrap: wrap;
+		align-items: center;
+		justify-content: space-between;
+		gap: 0.5rem 1.5rem;
+		padding-block: 0.75rem;
+	}
+	.brand {
+		display: inline-flex;
+		align-items: center;
+		gap: 0.6rem;
+		min-height: 2.75rem;
+		font-weight: 700;
+		font-size: 1.25rem;
+		letter-spacing: -0.01em;
+		text-decoration: none;
+	}
+	.mark {
+		width: 1.75rem;
+		height: 1.75rem;
+		background: var(--color-action);
+		-webkit-mask: url('/soleil.svg') center / contain no-repeat;
+		mask: url('/soleil.svg') center / contain no-repeat;
+	}
+	.menu-btn {
+		display: none;
+		align-items: center;
+		gap: 0.5rem;
+		min-height: 2.75rem;
+		padding: 0.5rem 0.9rem;
+		border: 2px solid var(--color-ink);
+		border-radius: 0.5rem;
+		background: transparent;
+		font: inherit;
+		font-weight: 700;
+		cursor: pointer;
+	}
+	.menu-btn[aria-expanded='true'] {
+		background: var(--color-ink);
+		color: var(--color-page);
+	}
+	nav ul {
+		display: flex;
+		flex-wrap: wrap;
+		align-items: center;
+		gap: 0.25rem 0.5rem;
+		margin: 0;
+		padding: 0;
+		list-style: none;
+	}
+	nav :global(a) {
+		display: inline-flex;
+		align-items: center;
+		min-height: 2.75rem;
+		padding: 0.5rem 0.75rem;
+		border-radius: 0.5rem;
+		font-weight: 700;
+		text-decoration: none;
+		transition: background-color 0.18s var(--ease-out-expo);
+	}
+	nav :global(a:hover) {
+		background: var(--color-sunk);
+	}
+	nav :global(a[aria-current='page']) {
+		text-decoration: underline;
+		text-decoration-thickness: 0.14em;
+		text-underline-offset: 0.35em;
+		text-decoration-color: var(--color-action-hover);
+	}
+	nav :global(a.nav-cta) {
+		padding-inline: 1.1rem;
+		border: 2px solid var(--color-ink);
+		background: var(--color-action);
+	}
+	nav :global(a.nav-cta:hover) {
+		background: var(--color-action-hover);
+	}
+	nav :global(a.nav-cta[aria-current='page']) {
+		text-decoration-color: var(--color-ink);
 	}
 
-	/* 1ª fila: logo izquierda, IG derecha */
-	h2 {
-		order: 0;
+	@media (max-width: 47.99rem) {
+		:global(.js) .menu-btn {
+			display: inline-flex;
+		}
+		:global(.js) nav:not([data-open]) {
+			display: none;
+		}
+		nav {
+			width: 100%;
+		}
+		:global(.js) nav ul {
+			flex-direction: column;
+			align-items: stretch;
+			gap: 0.25rem;
+			padding-block: 0.5rem 0.75rem;
+		}
+		:global(.js) nav :global(a) {
+			width: 100%;
+			padding-block: 0.75rem;
+		}
+		:global(.js) nav :global(a.nav-cta) {
+			justify-content: center;
+			margin-top: 0.25rem;
+		}
 	}
-
-	.social-links {
-		order: 1;
-		margin-left: auto;        /* se empuja a la derecha */
-	}
-
-	/* 2ª fila: enlaces centrados ocupando todo el ancho */
-	.internal-links {
-		order: 2;
-		width: 100%;
-		justify-content: center;
-		margin-top: 0.25rem;
-	}
-
-	.internal-links a {
-		padding: 0.5rem 0.5rem;
-		font-size: 0.9rem;
-		white-space: nowrap;
-	}
-}
 </style>
