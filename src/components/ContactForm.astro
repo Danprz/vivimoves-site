@@ -1,5 +1,6 @@
 ---
 import { activities } from '../data/activities';
+import { ateliers } from '../data/ateliers';
 import { FORMSPREE_ENDPOINT, CONTACT_EMAIL } from '../consts';
 ---
 
@@ -34,7 +35,17 @@ import { FORMSPREE_ENDPOINT, CONTACT_EMAIL } from '../consts';
 			<label for="cf-activity">Activité qui vous intéresse <span class="optional">(facultatif)</span></label>
 			<select class="input" id="cf-activity" name="activity">
 				<option value="">Pas encore défini</option>
-				{activities.map((activity) => <option value={activity.title} data-slug={activity.slug}>{activity.title}</option>)}
+				<optgroup label="Cours réguliers">
+					{activities.map((activity) => <option value={activity.title} data-slug={activity.slug}>{activity.title}</option>)}
+				</optgroup>
+				<optgroup label="Ateliers ponctuels">
+					{ateliers.map((atelier) => (
+						<option value={`Atelier « ${atelier.title} »`} data-slug={atelier.slug}>Atelier «&nbsp;{atelier.title}&nbsp;»</option>
+					))}
+				</optgroup>
+				<optgroup label="Mini-retraites">
+					<option value="Mini-retraite d’équipe" data-slug="mini-retraite">Mini-retraite d’équipe</option>
+				</optgroup>
 			</select>
 		</div>
 

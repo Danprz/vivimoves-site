@@ -1,0 +1,72 @@
+---
+import Cta from './Cta.astro';
+import type { Atelier } from '../data/ateliers';
+
+interface Props {
+	atelier: Atelier;
+}
+
+const { atelier } = Astro.props;
+
+// Une ligne sans valeur validée n’est pas affichée.
+const facts = [
+	{ label: 'Durée', value: atelier.facts.duree, icon: 'clock' },
+	{ label: 'Format', value: atelier.facts.format, icon: 'group' },
+	{ label: 'Lieu', value: atelier.facts.lieu, icon: 'place' },
+].filter((fact) => fact.value);
+
+const themesId = `${atelier.slug}-themes`;
+---
+
+<article id={atelier.slug} class="flex flex-col border-t-2 border-ink pt-6">
+	<h3>«&nbsp;{atelier.title}&nbsp;»</h3>
+	<p class="mt-3 font-bold">{atelier.pitch}</p>
+
+	<p class="mt-5" id={themesId}>Nos thématiques&nbsp;:</p>
+	<ul class="mt-2 list-disc space-y-1 pl-5 marker:text-accent-text" aria-labelledby={themesId}>
+		{atelier.themes.map((theme) => <li>{theme}</li>)}
+	</ul>
+
+	{
+		facts.length > 0 && (
+			<dl class="mt-6 grid gap-2 rounded-lg bg-surface p-4">
+				{facts.map((fact) => (
+					<div class="flex flex-wrap items-center gap-x-2">
+						<dt class="inline-flex items-center gap-2 text-ink-soft">
+							<svg class="icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+								{fact.icon === 'clock' && (
+									<>
+										<circle cx="12" cy="12" r="9" />
+										<path d="M12 7v5l3 2" />
+									</>
+								)}
+								{fact.icon === 'group' && (
+									<>
+										<circle cx="9" cy="8" r="3" />
+										<path d="M3 20c0-3.3 2.7-6 6-6s6 2.7 6 6" />
+										<circle cx="17" cy="9" r="2.5" />
+										<path d="M15.5 14.2c3 .4 5.5 2.8 5.5 5.8" />
+									</>
+								)}
+								{fact.icon === 'place' && (
+									<>
+										<path d="M12 21s-7-6.2-7-11a7 7 0 0 1 14 0c0 4.8-7 11-7 11z" />
+										<circle cx="12" cy="10" r="2.5" />
+									</>
+								)}
+							</svg>
+							{fact.label}&nbsp;:
+						</dt>
+						<dd class="font-bold">{fact.value}</dd>
+					</div>
+				))}
+			</dl>
+		)
+	}
+
+	<p class="mt-auto pt-5">
+		<Cta href={`/contact/?activite=${atelier.slug}#contact-form`} variant="link">
+			Proposer cet atelier à votre équipe
+		</Cta>
+	</p>
+</article>

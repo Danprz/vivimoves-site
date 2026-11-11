@@ -1,95 +1,128 @@
 ---
 import BaseLayout from '../layouts/BaseLayout.astro';
 import Cta from '../components/Cta.astro';
-import ActivityItem from '../components/ActivityItem.astro';
 import AboutBand from '../components/AboutBand.astro';
 import ContactBand from '../components/ContactBand.astro';
+import KeyFigures from '../components/KeyFigures.astro';
+import PracticeTile from '../components/PracticeTile.astro';
+import AtelierBlock from '../components/AtelierBlock.astro';
+import ReviewQuote from '../components/ReviewQuote.astro';
 import { activities } from '../data/activities';
-import { formats } from '../data/formats';
+import { ateliers } from '../data/ateliers';
+import { reviewFor } from '../data/reviews';
 import { ZONE_SENTENCE } from '../consts';
 
-const steps = [
-	{
-		title: 'On échange',
-		text: 'Vous nous parlez de votre équipe, de votre contexte et de vos envies.',
-	},
-	{
-		title: 'Nous vous proposons une intervention adaptée',
-		text: 'Pratique, format et rythme : la proposition se construit à partir de ce que vous nous avez décrit.',
-	},
-	{
-		title: 'On passe à la pratique',
-		text: 'La séance, l’atelier ou la mini-retraite a lieu avec votre équipe.',
-	},
+// Un exemple adaptable : ni horaires, ni lieu, ni nombre de participants.
+const retreatSteps = [
+	{ title: 'Accueil et mise en mouvement', text: 'Un réveil du corps en douceur, pour arriver.' },
+	{ title: 'Pratique guidée', text: 'Yoga ou Pilates, accessible à tous les niveaux.' },
+	{ title: 'Atelier à thème', text: 'Mouvement, alimentation ou sommeil : l’équipe choisit.' },
+	{ title: 'Bain sonore de clôture', text: 'Un temps calme pour repartir posé.' },
 ];
 ---
 
 <BaseLayout
-	title="Yoga, Pilates et bien-être en entreprise · Vivimoves"
-	description="Cinq pratiques pour vos équipes à Cergy et dans le Val-d’Oise : cours réguliers, ateliers ponctuels ou mini-retraites d’équipe. Parlons de votre projet."
+	title="Bien-être en entreprise : cours, ateliers et mini-retraites · Vivimoves"
+	description="Cours réguliers de yoga, Pilates, running ou gym posturale, ateliers bien-être et mini-retraites d’équipe à Cergy et dans le Val-d’Oise."
 >
 	<section class="wrap pt-12 pb-16 md:pt-20 md:pb-24">
 		<h1 class="max-w-4xl">Des pauses qui remettent vos équipes en mouvement</h1>
 		<p class="lede mt-6">
-			Yoga, Pilates, éveil musculaire, gym posturale, méditation et bains sonores : nous
-			intervenons auprès de vos salariés, en cours réguliers, en ateliers ou en mini-retraite.
+			Entre deux réunions, le corps passe vite au second plan. Nous proposons à vos salariés des
+			cours réguliers, des ateliers et des mini-retraites pour bouger, souffler et se retrouver
+			autrement que devant un écran.
 		</p>
 		<div class="mt-8 flex flex-wrap items-center gap-x-6 gap-y-3">
 			<Cta href="/contact/">Parlons de votre équipe</Cta>
-			<Cta href="#activites" variant="link">Voir les cinq pratiques</Cta>
+			<Cta href="#cours-reguliers" variant="link">Voir les trois formats</Cta>
 		</div>
+		<p class="mt-5 text-ink-soft">
+			{ZONE_SENTENCE} Votre entreprise est ailleurs&nbsp;? <a href="/contact/">Parlons-en</a>.
+		</p>
+
+		<h2 class="mt-14 text-[clamp(1.25rem,1.12rem+0.6vw,1.5rem)] md:mt-20">
+			Pourquoi bouger pendant la journée de travail&nbsp;?
+		</h2>
+		<KeyFigures />
 	</section>
 
-	<section class="bg-sunk">
-		<div class="wrap section grid gap-6 md:grid-cols-2 md:gap-16">
-			<h2>Pourquoi bouger pendant la journée de travail ?</h2>
-			<p class="lede">
-				Entre deux réunions, le corps passe vite au second plan : on reste assis, on enchaîne,
-				on oublie de respirer. Proposer un temps de mouvement ou de pause, c’est offrir à
-				l’équipe un moment pour se délier, souffler et se retrouver autrement que devant un
-				écran.
-			</p>
-		</div>
-	</section>
-
-	<section id="activites" class="wrap section">
-		<h2 class="max-w-3xl">Cinq pratiques, cinq expériences différentes</h2>
-		<div class="ruled mt-10 border-b border-line-strong">
-			{activities.map((activity) => <ActivityItem activity={activity} />)}
-		</div>
-	</section>
-
-	<section id="formats" class="on-accent bg-action">
+	<section id="cours-reguliers" class="border-t border-line">
 		<div class="wrap section">
-			<h2 class="max-w-3xl">Trois formats pour s’adapter à votre rythme</h2>
-			<ul class="mt-10 grid gap-8 md:grid-cols-3 md:gap-10">
+			<div class="grid gap-5 md:grid-cols-[1fr_1.4fr] md:items-end md:gap-16">
+				<h2>Cours réguliers</h2>
+				<p class="lede">
+					Un rendez-vous récurrent pour installer une pratique dans l’équipe. Cinq pratiques, à
+					choisir ensemble&nbsp;:
+				</p>
+			</div>
+			<ul class="mt-10 grid gap-x-6 gap-y-10 md:grid-cols-6">
 				{
-					formats.map((format) => (
-						<li class="border-t-2 border-ink pt-5">
-							<h3>{format.title}</h3>
-							<p class="mt-3">{format.text}</p>
-						</li>
+					activities.map((activity, index) => (
+						<PracticeTile activity={activity} size={index < 2 ? 'large' : 'small'} />
 					))
 				}
 			</ul>
+			<p class="mt-6 text-[0.9375rem] text-ink-soft">Images d’illustration.</p>
+			<div class="mt-12 grid gap-12 md:grid-cols-[1fr_1.4fr] md:items-start md:gap-16">
+				<p>
+					<Cta href="/contact/#contact-form">Mettre en place un cours régulier</Cta>
+				</p>
+				<ReviewQuote
+					review={reviewFor('entreprises')}
+					intro="Ce que disent les participants à nos cours"
+				/>
+			</div>
 		</div>
 	</section>
 
-	<section id="demarche" class="wrap section">
-		<h2 class="max-w-3xl">Comment se construit un projet</h2>
-		<ol class="steps mt-10 grid gap-8 md:grid-cols-3 md:gap-10">
-			{
-				steps.map((step) => (
-					<li>
-						<h3>{step.title}</h3>
-						<p class="mt-3 text-ink-soft">{step.text}</p>
-					</li>
-				))
-			}
-		</ol>
-		<p class="mt-12 max-w-2xl border-t border-line-strong pt-6">
-			<strong>{ZONE_SENTENCE}</strong> Votre entreprise est ailleurs ? <a href="/contact/">Parlons-en</a>.
-		</p>
+	<section id="ateliers" class="bg-sunk">
+		<div class="wrap section">
+			<div class="grid gap-5 md:grid-cols-[1fr_1.4fr] md:items-end md:gap-16">
+				<h2>Ateliers ponctuels de bien-être et de prévention</h2>
+				<p class="lede">
+					Un temps fort autour d’un thème, pour comprendre et repartir avec des repères simples.
+					Trois ateliers au choix&nbsp;:
+				</p>
+			</div>
+			<div class="mt-12 grid gap-12 lg:grid-cols-3 lg:gap-10">
+				{ateliers.map((atelier) => <AtelierBlock atelier={atelier} />)}
+			</div>
+		</div>
+	</section>
+
+	<section id="mini-retraites" class="on-accent bg-action">
+		<div class="wrap section grid gap-10 md:grid-cols-[1fr_1.2fr] md:gap-16">
+			<div>
+				<h2>Mini-retraites d’équipe</h2>
+				<p class="lede mt-5">
+					Une journée ou une demi-journée pour ralentir, bouger et se retrouver, loin des écrans.
+				</p>
+				<p class="mt-4 measure">
+					Le programme se construit avec vous&nbsp;: les pratiques et le rythme s’adaptent à votre
+					équipe.
+				</p>
+				<p class="mt-6">
+					<Cta href="/contact/?activite=mini-retraite#contact-form" variant="secondary">
+						Imaginer une mini-retraite
+					</Cta>
+				</p>
+			</div>
+			<div>
+				<h3>Un exemple de déroulé</h3>
+				<ol class="steps steps-inline mt-6 grid gap-6">
+					{
+						retreatSteps.map((step) => (
+							<li>
+								<div>
+									<h4 class="font-bold">{step.title}</h4>
+									<p class="mt-1">{step.text}</p>
+								</div>
+							</li>
+						))
+					}
+				</ol>
+			</div>
+		</div>
 	</section>
 
 	<AboutBand showFacilitator />
@@ -98,27 +131,3 @@ const steps = [
 		text="Décrivez-nous votre contexte, même en quelques lignes. On construit le reste ensemble."
 	/>
 </BaseLayout>
-
-<style>
-	.steps {
-		list-style: none;
-		padding: 0;
-		counter-reset: step;
-	}
-	.steps li {
-		counter-increment: step;
-	}
-	.steps li::before {
-		content: counter(step);
-		display: inline-flex;
-		align-items: center;
-		justify-content: center;
-		width: 2.5rem;
-		height: 2.5rem;
-		margin-bottom: 1rem;
-		border: 2px solid var(--color-ink);
-		border-radius: 999px;
-		background: var(--color-action);
-		font-weight: 700;
-	}
-</style>

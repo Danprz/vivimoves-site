@@ -2,10 +2,12 @@
 import BaseLayout from '../layouts/BaseLayout.astro';
 import Cta from '../components/Cta.astro';
 import ExternalLink from '../components/ExternalLink.astro';
+import ReviewQuote from '../components/ReviewQuote.astro';
 import { Image } from 'astro:assets';
 import tshirt from '../assets/club-tshirt.jpg';
-import pleinAir from '../assets/club-plein-air.jpg';
+import seanceTerrasse from '../assets/club-seance-terrasse.jpg';
 import reformer from '../assets/club-reformer.jpg';
+import { reviewFor } from '../data/reviews';
 import { BOOKWHEN_URL, PR_CLUB_INSTAGRAM_URL } from '../consts';
 
 const spirit = [
@@ -68,16 +70,17 @@ const spirit = [
 				))
 			}
 		</ul>
+		<ReviewQuote class="mt-14" review={reviewFor('le-pr-club')} />
 	</section>
 
 	<section class="bg-sunk">
 		<div class="wrap section grid gap-10 md:grid-cols-2 md:items-center md:gap-16">
 			<Image
-				src={pleinAir}
-				alt="Séance de Pilates du PR Club en plein air : quatre personnes assises sur des tapis dans l’herbe."
+				src={seanceTerrasse}
+				alt="Séance de Pilates du PR Club en plein air : une quinzaine de personnes sur des tapis, sur une terrasse en bois au bord de l’eau."
 				widths={[480, 768, 1024]}
 				sizes="(min-width: 48rem) 34rem, 100vw"
-				class="aspect-[4/3] w-full rounded-lg object-cover"
+				class="aspect-[3/2] w-full rounded-lg object-cover"
 				loading="lazy"
 			/>
 			<div>

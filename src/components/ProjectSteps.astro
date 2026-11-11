@@ -1,0 +1,36 @@
+---
+import { ZONE_SENTENCE } from '../consts';
+
+const steps = [
+	{
+		title: 'On échange',
+		text: 'Vous nous parlez de votre équipe, de votre contexte et de vos envies.',
+	},
+	{
+		title: 'Nous vous proposons une intervention adaptée',
+		text: 'Pratique, format et rythme : la proposition se construit à partir de ce que vous nous avez décrit.',
+	},
+	{
+		title: 'On passe à la pratique',
+		text: 'La séance, l’atelier ou la mini-retraite a lieu avec votre équipe.',
+	},
+];
+---
+
+<section class="wrap section">
+	<h2 class="max-w-3xl">Comment se construit un projet</h2>
+	<ol class="steps mt-10 grid gap-8 md:grid-cols-3 md:gap-10">
+		{
+			steps.map((step) => (
+				<li>
+					<h3>{step.title}</h3>
+					<p class="mt-3 text-ink-soft">{step.text}</p>
+				</li>
+			))
+		}
+	</ol>
+	<p class="mt-12 max-w-2xl border-t border-line-strong pt-6">
+		<strong>{ZONE_SENTENCE}</strong> Votre entreprise est ailleurs&nbsp;? <a href="/contact/">Parlons-en</a>.
+	</p>
+	<slot />
+</section>

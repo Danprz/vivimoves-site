@@ -2,8 +2,10 @@
 import BaseLayout from '../layouts/BaseLayout.astro';
 import ExternalLink from '../components/ExternalLink.astro';
 import ContactBand from '../components/ContactBand.astro';
+import ReviewQuote from '../components/ReviewQuote.astro';
 import { Image } from 'astro:assets';
-import portrait from '../assets/virginia-portrait.jpg';
+import portrait from '../assets/virginia-studio.jpg';
+import { reviewFor } from '../data/reviews';
 import { VIRGINIA_LINKEDIN_URL } from '../consts';
 ---
 
@@ -47,10 +49,10 @@ import { VIRGINIA_LINKEDIN_URL } from '../consts';
 		<div class="wrap section grid gap-10 md:grid-cols-[18rem_1fr] md:items-start md:gap-16">
 			<Image
 				src={portrait}
-				alt="Portrait de Virginia, assise sur un tapis de pratique."
+				alt="Virginia, souriante, debout à l’entrée d’un studio de Pilates, en t-shirt du PR Club."
 				widths={[320, 480, 640]}
 				sizes="(min-width: 48rem) 18rem, 60vw"
-				class="aspect-square w-full max-w-72 rounded-lg object-cover object-top"
+				class="aspect-[3/4] w-full max-w-72 rounded-lg object-cover object-top"
 				loading="lazy"
 			/>
 			<div>
@@ -67,6 +69,7 @@ import { VIRGINIA_LINKEDIN_URL } from '../consts';
 						Voir son profil LinkedIn
 					</ExternalLink>
 				</p>
+				<ReviewQuote class="mt-10" review={reviewFor('a-propos')} />
 			</div>
 		</div>
 	</section>

@@ -4,8 +4,8 @@ Dirección fijada por Virginia el 2026-11-11: **estándar del sector, ejecutado 
 
 ## Principios
 
-- La empresa por delante de la persona: páginas tipográficas, sin retratos en portada ni en «Entreprises».
-- Crema como fondo, casi negro para el texto, mostaza para las acciones y para bandas completas (formatos, bloque y página del club).
+- La empresa por delante de la persona: sin retratos en portada ni en «Entreprises». La portada es tipográfica; «Entreprises» combina texto breve con un mosaico de fotografías de ilustración (dos grandes y tres pequeñas, proporción 3:2, sin sombras ni botones por elemento) y la mención visible «Images d’illustration».
+- Crema como fondo, casi negro para el texto, mostaza para las acciones y para bandas completas (formatos en la portada, mini-retraites, bloque y página del club). Dos bandas mostaza nunca son contiguas.
 - Bloques ordenados separados por filetes; nada de rejillas de tarjetas idénticas con icono y sombra, ni emojis, degradados o efectos de vidrio.
 - Sin antetítulos sobre los titulares. La numeración solo aparece donde el orden informa (pasos del proyecto).
 - El club usa los mismos tokens con más mostaza y más fotografía.
@@ -35,6 +35,14 @@ Una sola familia, **Atkinson Hyperlegible**, ya alojada en `public/fonts/` (400 
 ## Componentes
 
 `.btn` (borde `ink` de 2 px, radio 0,5rem, alto mínimo 44 px) en variantes `btn-primary` y `btn-secondary`; `.text-link` con flecha; `.input`; `.ruled` para listas con filetes. Foco: contorno de 2 px en `ink` sobre fondos claros y mostaza, en crema dentro de `.on-dark`.
+
+### Bloques de contenido
+
+- **Bande des formats** (`FormatsBand`): tres columnas con filete superior de 2 px; cada columna es un único enlace extendido a toda su superficie, con el foco dibujado alrededor de la columna.
+- **Cifras** (`KeyFigures`): número en 700 al tamaño de un `h2`, en `ink` (nunca mostaza sobre crema), frase y fuente enlazada en `ink-soft`. Sin iconos.
+- **Talleres** (`AtelierBlock`): filete superior, frase destacada en negrita, lista «Nos thématiques» y ficha práctica en un panel `surface` con iconos de trazo decorativos y etiquetas de texto.
+- **Reseña** (`ReviewQuote`): una por página, `figure` con filete superior, cita al tamaño `lede`, firma en `ink-soft` y enlace a Google. Sin comillas gigantes ni tarjetas.
+- **Pasos numerados** (`.steps`, `.steps-inline`): círculo mostaza con borde `ink`; sobre fondo mostaza el círculo pasa a crema.
 
 ## Movimiento
 

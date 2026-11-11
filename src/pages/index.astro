@@ -3,9 +3,12 @@ import BaseLayout from '../layouts/BaseLayout.astro';
 import Cta from '../components/Cta.astro';
 import AboutBand from '../components/AboutBand.astro';
 import ContactBand from '../components/ContactBand.astro';
+import FormatsBand from '../components/FormatsBand.astro';
+import ProjectSteps from '../components/ProjectSteps.astro';
+import ReviewQuote from '../components/ReviewQuote.astro';
 import { Image } from 'astro:assets';
 import clubPhoto from '../assets/club-plein-air.jpg';
-import { activities } from '../data/activities';
+import { reviewFor } from '../data/reviews';
 import { SITE_DESCRIPTION } from '../consts';
 ---
 
@@ -29,31 +32,11 @@ import { SITE_DESCRIPTION } from '../consts';
 		</div>
 	</section>
 
-	<section class="border-t border-line">
-		<div class="wrap section grid gap-10 md:grid-cols-[1fr_1.4fr] md:gap-16">
-			<div>
-				<h2>Cinq façons de remettre du mouvement dans la journée</h2>
-				<p class="mt-5 text-ink-soft">
-					En cours réguliers, en ateliers ponctuels ou en mini-retraite d’équipe.
-				</p>
-				<p class="mt-4">
-					<Cta href="/entreprises/" variant="link">Voir les interventions en entreprise</Cta>
-				</p>
-			</div>
-			<ul class="ruled border-b border-line-strong">
-				{
-					activities.map((activity) => (
-						<li class="grid gap-1 py-5 sm:grid-cols-[14rem_1fr] sm:gap-6">
-							<a class="font-bold" href={`/entreprises/#${activity.slug}`}>
-								{activity.shortTitle}
-							</a>
-							<span class="text-ink-soft">{activity.teaser}</span>
-						</li>
-					))
-				}
-			</ul>
-		</div>
-	</section>
+	<FormatsBand />
+
+	<ProjectSteps>
+		<ReviewQuote class="mt-14" review={reviewFor('accueil')} />
+	</ProjectSteps>
 
 	<section class="on-accent bg-action">
 		<div class="wrap section grid gap-10 md:grid-cols-2 md:items-center md:gap-16">
