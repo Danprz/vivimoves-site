@@ -1,0 +1,179 @@
+---
+import { Image } from 'astro:assets';
+import type { ImageMetadata } from 'astro';
+import ExternalLink from './ExternalLink.astro';
+import type { Cours } from '../data/cours';
+
+interface Props {
+	cours: Cours;
+	photo: ImageMetadata;
+	photoAlt: string;
+	/** Met la photographie à gauche à partir de md (alternance d’un cours à l’autre). */
+	photoFirst?: boolean;
+	/** Fond de la section, choisi pour alterner avec les sections voisines. */
+	tone?: 'page' | 'sunk';
+}
+
+const { cours, photo, photoAlt, photoFirst = false, tone = 'page' } = Astro.props;
+const headingId = `${cours.id}-titre`;
+
+const capitalize = (word: string) => word.charAt(0).toUpperCase() + word.slice(1);
+const listFr = (items: string[]) =>
+	items.length < 2 ? items.join('') : `${items.slice(0, -1).join(', ')} et ${items.at(-1)}`;
+---
+
+<section
+	id={cours.id}
+	class:list={['cours', tone === 'sunk' && 'bg-sunk']}
+	aria-labelledby={headingId}
+>
+	<div class:list={['wrap section layout', photoFirst && 'photo-first']}>
+		<div class="text">
+			<h2 id={headingId}>{cours.titre}</h2>
+			<p class="lede mt-4">{cours.accroche}</p>
+			<p class="mt-4 text-ink-soft">Cours animés par Virginia, coach sportive diplômée d’État.</p>
+
+			<div class="fiche mt-8">
+				<div class="lieu">
+					<svg class="pin" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+						<path d="M12 21s-7-6.2-7-11.5A7 7 0 0 1 19 9.5C19 14.8 12 21 12 21Z"></path>
+						<circle cx="12" cy="9.5" r="2.5"></circle>
+					</svg>
+					<address>
+						<strong>{cours.lieu}</strong><br />
+						{cours.adresse.rue}, {cours.adresse.ville}
+					</address>
+				</div>
+
+				<h3 class="horaires-titre">Chaque semaine</h3>
+				<dl class="horaires">
+					{
+						cours.creneaux.map((creneau) => (
+							<div class="creneau">
+								<dt>{capitalize(listFr(creneau.jours))}</dt>
+								<dd>
+									<ul class="heures" aria-label={`Heures : ${listFr(creneau.heures)}`}>
+										{creneau.heures.map((heure) => (
+											<li>{heure}</li>
+										))}
+									</ul>
+								</dd>
+							</div>
+						))
+					}
+				</dl>
+			</div>
+
+			<p class="mt-8">
+				<ExternalLink class="btn btn-primary" href={cours.reservationUrl}>
+					{cours.reservationLabel}
+				</ExternalLink>
+			</p>
+			<p class="mt-3 text-[0.9375rem] text-ink-soft">
+				Les places disponibles s’affichent au moment de réserver.
+			</p>
+		</div>
+
+		<Image
+			src={photo}
+			alt={photoAlt}
+			widths={[480, 768, 1024]}
+			sizes="(min-width: 48rem) 34rem, 100vw"
+			class="photo"
+			loading="lazy"
+		/>
+	</div>
+</section>
+
+<style>
+	.layout {
+		display: grid;
+		gap: 2.5rem;
+	}
+	.photo {
+		width: 100%;
+		aspect-ratio: 4 / 5;
+		object-fit: cover;
+		border-radius: 0.5rem;
+	}
+	@media (min-width: 48rem) {
+		.layout {
+			grid-template-columns: minmax(0, 1.1fr) minmax(0, 1fr);
+			align-items: center;
+			gap: 4rem;
+		}
+		.photo-first .photo {
+			order: -1;
+		}
+		.photo {
+			max-height: 40rem;
+		}
+	}
+	@media (max-width: 47.99rem) {
+		.photo {
+			aspect-ratio: 3 / 2;
+		}
+	}
+
+	/* Fiche pratique : lieu puis horaires, mêmes positions d’un cours à l’autre. */
+	.fiche {
+		border-top: 2px solid var(--color-ink);
+		padding-top: 1.25rem;
+	}
+	.lieu {
+		display: grid;
+		grid-template-columns: 1.5rem 1fr;
+		gap: 0.75rem;
+		align-items: start;
+	}
+	.pin {
+		width: 1.5rem;
+		height: 1.5rem;
+		margin-top: 0.1rem;
+	}
+	address {
+		font-style: normal;
+		line-height: 1.5;
+	}
+	.horaires-titre {
+		margin-top: 1.75rem;
+		font-size: 1rem;
+		letter-spacing: 0;
+	}
+	.horaires {
+		margin-top: 0.5rem;
+	}
+	.creneau {
+		display: flex;
+		flex-wrap: wrap;
+		align-items: center;
+		justify-content: space-between;
+		gap: 0.5rem 1rem;
+		padding-block: 0.8rem;
+		border-top: 1px solid var(--color-line-strong);
+	}
+	.creneau:last-child {
+		border-bottom: 1px solid var(--color-line-strong);
+	}
+	dt {
+		font-weight: 700;
+	}
+	.heures {
+		display: flex;
+		flex-wrap: wrap;
+		gap: 0.5rem;
+		list-style: none;
+		padding: 0;
+		margin: 0;
+	}
+	.heures li {
+		min-width: 4.25rem;
+		padding: 0.3rem 0.7rem;
+		border: 1.5px solid var(--color-ink);
+		border-radius: 999px;
+		background: var(--color-surface);
+		font-weight: 700;
+		font-variant-numeric: tabular-nums;
+		text-align: center;
+	}
+</style>

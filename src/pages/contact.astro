@@ -1,11 +1,11 @@
 ---
 import BaseLayout from '../layouts/BaseLayout.astro';
 import ContactForm from '../components/ContactForm.astro';
+import Cta from '../components/Cta.astro';
 import ExternalLink from '../components/ExternalLink.astro';
 import {
 	SITE_TITLE,
 	CONTACT_EMAIL,
-	BOOKWHEN_URL,
 	VIRGINIA_INSTAGRAM_URL,
 	VIRGINIA_LINKEDIN_URL,
 	ZONE_SENTENCE,
@@ -43,12 +43,12 @@ import {
 			</div>
 
 			<div class="mt-8 border-t border-line-strong pt-6">
-				<h2 class="text-xl tracking-normal">Une séance du PR Club ?</h2>
+				<h2 class="text-xl tracking-normal">Un cours de Pilates ou une sortie du PR Club ?</h2>
 				<p class="mt-2">
-					Vous souhaitez réserver une séance du PR Club ? Les réservations se font sur Bookwhen.
+					Horaires, lieux et réservation des cours sont réunis sur une seule page.
 				</p>
 				<p class="mt-2">
-					<ExternalLink class="text-link" href={BOOKWHEN_URL}>Voir les prochaines séances</ExternalLink>
+					<Cta href="/le-pr-club/" variant="link">Voir les cours et réserver</Cta>
 				</p>
 			</div>
 		</div>

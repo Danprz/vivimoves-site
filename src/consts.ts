@@ -9,6 +9,7 @@ export const CONTACT_EMAIL = 'virginiavallejo@gmail.com';
 
 export const BOOKWHEN_URL = 'https://bookwhen.com/fr/leprclub';
 export const PR_CLUB_INSTAGRAM_URL = 'https://www.instagram.com/leprclub/';
+export const SI_LE_PILATES_URL = 'https://si-lepilates.com/';
 export const VIRGINIA_INSTAGRAM_URL = 'https://www.instagram.com/virginia.moves/';
 export const VIRGINIA_LINKEDIN_URL = 'https://www.linkedin.com/in/virginiavallejo94/';
 export const GOOGLE_REVIEWS_URL = 'https://share.google/kFFwodaqELVOBsrK4';
