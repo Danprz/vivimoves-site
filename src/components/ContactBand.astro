@@ -1,0 +1,25 @@
+---
+import Cta from './Cta.astro';
+
+interface Props {
+	title?: string;
+	text?: string;
+}
+
+const {
+	title = 'Un projet pour votre équipe ?',
+	text = 'Racontez-nous votre contexte : nous vous proposerons une intervention adaptée.',
+} = Astro.props;
+---
+
+<section class="on-dark bg-ink text-page">
+	<div class="wrap section grid gap-8 md:grid-cols-[1.5fr_1fr] md:items-end">
+		<div>
+			<h2>{title}</h2>
+			<p class="lede mt-4 text-on-dark-soft">{text}</p>
+		</div>
+		<p class="md:justify-self-end">
+			<Cta href="/contact/">Construisons votre projet</Cta>
+		</p>
+	</div>
+</section>

@@ -1,0 +1,167 @@
+---
+import BaseLayout from '../layouts/BaseLayout.astro';
+import Cta from '../components/Cta.astro';
+import CoursBlock from '../components/CoursBlock.astro';
+import ExternalLink from '../components/ExternalLink.astro';
+import GoogleReview from '../components/GoogleReview.astro';
+import { Image } from 'astro:assets';
+import cergyPontoise from '../assets/cergy-pontoise.jpg';
+import seanceTerrasse from '../assets/club-seance-terrasse.jpg';
+import reformer from '../assets/club-reformer.jpg';
+import sortieRunning from '../assets/club-sortie-running.webp';
+import { cours } from '../data/cours';
+import { reviewFor } from '../data/reviews';
+import { BOOKWHEN_URL, PR_CLUB_INSTAGRAM_URL } from '../consts';
+
+const [tapis, reformerCours] = cours;
+---
+
+<BaseLayout
+	tone="club"
+	title="Cours de Pilates à Cergy-Pontoise · tapis, Reformer et PR Club"
+	description="Cours de Pilates sur tapis et Reformer à Pontoise, chaque semaine, et sorties running gratuites avec Le PR Club. Horaires, lieux et réservation."
+>
+	<section class="hero cours-hero on-dark">
+		<Image
+			src={cergyPontoise}
+			alt=""
+			widths={[640, 960, 1134]}
+			sizes="100vw"
+			class="hero-photo"
+			loading="eager"
+			fetchpriority="high"
+		/>
+		<div class="hero-veil" aria-hidden="true"></div>
+		<div class="wrap hero-content">
+			<div class="hero-text">
+				<h1>Trouvez votre prochain cours <span class="lieu">à&nbsp;Cergy-Pontoise</span></h1>
+				<p class="lede mt-6">
+					Découvrez nos cours de Pilates sur tapis et Reformer, et trouvez le créneau qui vous
+					correspond.
+				</p>
+				<p class="mt-4 max-w-xl">
+					Rejoignez Le PR Club, la communauté qui fait bouger Cergy-Pontoise à travers le Pilates
+					et le running.
+				</p>
+				<nav class="raccourcis mt-8" aria-label="Accès aux cours">
+					<a class="btn btn-primary" href="#pilates-tapis">Pilates sur tapis</a>
+					<a class="btn btn-ghost" href="#pilates-reformer">Pilates Reformer</a>
+					<a class="btn btn-ghost" href="#sorties-running">Sorties running</a>
+				</nav>
+			</div>
+		</div>
+	</section>
+
+	<CoursBlock
+		cours={tapis}
+		photo={seanceTerrasse}
+		photoAlt="Séance de Pilates sur tapis en plein air : une quinzaine de personnes sur une terrasse en bois au bord de l’eau."
+	/>
+
+	<CoursBlock
+		cours={reformerCours}
+		photo={reformer}
+		photoAlt="Une pratiquante de dos sur un reformer de Pilates, vêtue du t-shirt du PR Club."
+		photoFirst
+		tone="sunk"
+	/>
+
+	<section id="sorties-running" aria-labelledby="sorties-running-titre">
+		<div class="wrap section running-layout">
+			<div>
+				<h2 id="sorties-running-titre">Sorties running</h2>
+				<p class="lede mt-4">
+					Courez avec Le PR Club, la communauté Pilates et running de Cergy-Pontoise : on bouge
+					ensemble, sans compétition, pour le plaisir et pour le groupe.
+				</p>
+				<p class="gratuit mt-6">Sorties gratuites</p>
+				<p class="mt-4 measure">
+					Dates des prochaines sorties et vie du club : tout est annoncé sur Instagram. Le club a
+					été fondé par Virginia.
+				</p>
+				<div class="mt-8 flex flex-wrap items-center gap-x-6 gap-y-3">
+					<ExternalLink class="btn btn-primary" href={PR_CLUB_INSTAGRAM_URL}>
+						Suivre Le PR Club sur Instagram
+					</ExternalLink>
+					<ExternalLink class="text-link" href={BOOKWHEN_URL}>
+						Voir les prochaines sorties
+					</ExternalLink>
+				</div>
+			</div>
+			<Image
+				quality={68}
+				src={sortieRunning}
+				alt="Trois personnes de dos courent sur la passerelle rouge de l’Axe Majeur, deux d’entre elles en t-shirt du PR Club."
+				widths={[480, 768, 1128]}
+				sizes="(min-width: 48rem) 34rem, 100vw"
+				class="running-photo"
+				loading="lazy"
+			/>
+		</div>
+	</section>
+
+	<GoogleReview review={reviewFor('le-pr-club')} tone="sunk" />
+
+	<section class="on-dark bg-ink text-page">
+		<div class="wrap section grid gap-8 md:grid-cols-[1.5fr_1fr] md:items-end">
+			<div>
+				<h2>Vous cherchez une activité pour votre équipe ?</h2>
+				<p class="lede mt-4 text-on-dark-soft">
+					Bliss intervient aussi en entreprise : cours réguliers, ateliers et
+					mini-retraites d’équipe.
+				</p>
+			</div>
+			<p class="md:justify-self-end">
+				<Cta href="/entreprises/">Découvrir les interventions en entreprise</Cta>
+			</p>
+		</div>
+	</section>
+</BaseLayout>
+
+<style>
+	/* La passerelle rouge reste visible à droite du texte en grand écran. */
+	.cours-hero :global(.hero-photo) {
+		object-position: 60% 55%;
+	}
+	.cours-hero .hero-content {
+		grid-template-rows: 1fr;
+	}
+	.cours-hero h1 {
+		max-width: 16ch;
+	}
+	.cours-hero .lieu {
+		color: var(--color-action);
+	}
+	.gratuit {
+		display: inline-block;
+		padding: 0.45rem 1rem;
+		border: 2px solid var(--color-ink);
+		border-radius: 999px;
+		background: var(--color-surface);
+		font-weight: 700;
+	}
+	/* Même grille que les blocs de cours (CoursBlock). */
+	.running-layout {
+		display: grid;
+		gap: 2.5rem;
+	}
+	/* Photo très saturée (rouge, bleu) : légèrement atténuée pour s’accorder aux deux autres. */
+	:global(.running-photo) {
+		width: 100%;
+		aspect-ratio: 4 / 5;
+		object-fit: cover;
+		object-position: 50% 60%;
+		border-radius: 0.5rem;
+		filter: saturate(0.7) brightness(0.92);
+	}
+	@media (min-width: 48rem) {
+		.running-layout {
+			grid-template-columns: minmax(0, 1.1fr) minmax(0, 1fr);
+			align-items: center;
+			gap: 4rem;
+		}
+		:global(.running-photo) {
+			max-height: 40rem;
+		}
+	}
+</style>

@@ -22,3 +22,9 @@ pnpm-debug.log*
 
 # jetbrains setting folder
 .idea/
+
+# photos originales non optimisées (hors site)
+originaux/
+
+# Originaux photo (HEIC) : sources locales, non publiées
+docs/prompts/*.HEIC

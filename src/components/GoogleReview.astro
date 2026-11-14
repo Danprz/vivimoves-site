@@ -1,0 +1,186 @@
+---
+import ExternalLink from './ExternalLink.astro';
+import type { Review } from '../data/reviews';
+import { GOOGLE_REVIEWS_URL } from '../consts';
+
+interface Props {
+	review: Review;
+	/** Phrase d’introduction ; sur /entreprises/, elle précise qu’il s’agit de participants aux cours. */
+	intro?: string;
+	/** Fond de la section, choisi pour alterner avec les sections voisines. */
+	tone?: 'page' | 'sunk';
+}
+
+const { review, intro = 'Ils et elles en parlent', tone = 'page' } = Astro.props;
+const headingId = `avis-google-${review.page}`;
+const initial = review.author.trim().charAt(0).toUpperCase();
+const stars = [1, 2, 3, 4, 5];
+---
+
+<section class:list={['google-review', tone === 'sunk' && 'bg-sunk']} aria-labelledby={headingId}>
+	<div class="wrap section layout">
+		<div class="head">
+			<h2 id={headingId} class="title">
+				<svg class="g-logo" viewBox="0 0 48 48" aria-hidden="true" focusable="false">
+					<!-- Logo Google : seule exception aux jetons de couleur (marque tierce, voir DESIGN.md). -->
+					<path fill="#EA4335" d="M24 9.5c3.54 0 6.71 1.22 9.21 3.6l6.85-6.85C35.9 2.38 30.47 0 24 0 14.62 0 6.51 5.38 2.56 13.22l7.98 6.19C12.43 13.72 17.74 9.5 24 9.5z"></path>
+					<path fill="#4285F4" d="M46.98 24.55c0-1.57-.15-3.09-.38-4.55H24v9.02h12.94c-.58 2.96-2.26 5.48-4.78 7.18l7.73 6c4.51-4.18 7.09-10.36 7.09-17.65z"></path>
+					<path fill="#FBBC05" d="M10.53 28.59c-.48-1.45-.76-2.99-.76-4.59s.27-3.14.76-4.59l-7.98-6.19C.92 16.46 0 20.12 0 24c0 3.88.92 7.54 2.56 10.78l7.97-6.19z"></path>
+					<path fill="#34A853" d="M24 48c6.48 0 11.93-2.13 15.89-5.81l-7.73-6c-2.15 1.45-4.92 2.3-8.16 2.3-6.26 0-11.57-4.22-13.47-9.91l-7.98 6.19C6.51 42.62 14.62 48 24 48z"></path>
+				</svg>
+				Avis Google
+			</h2>
+			<p class="lede mt-4">{intro}</p>
+		</div>
+
+		<figure class="card">
+			{
+				review.rating && (
+					<div class="stars" role="img" aria-label={`Note : ${review.rating} sur 5`}>
+						{stars.map((n) => (
+							<svg class:list={['star', n <= review.rating! && 'is-full']} viewBox="0 0 24 24" aria-hidden="true" focusable="false">
+								<path d="M12 2.8l2.82 5.72 6.31.92-4.57 4.45 1.08 6.29L12 17.21l-5.64 2.97 1.08-6.29-4.57-4.45 6.31-.92z" />
+							</svg>
+						))}
+					</div>
+				)
+			}
+			<blockquote class="quote">
+				<p>«&nbsp;{review.text}&nbsp;»</p>
+			</blockquote>
+			<figcaption class="byline">
+				<span class="avatar" aria-hidden="true">{initial}</span>
+				<span class="who">
+					<span class="name">{review.author}</span>
+					<span class="source">Avis Google</span>
+				</span>
+				<svg class="g-logo g-logo-sm" viewBox="0 0 48 48" aria-hidden="true" focusable="false">
+					<path fill="#EA4335" d="M24 9.5c3.54 0 6.71 1.22 9.21 3.6l6.85-6.85C35.9 2.38 30.47 0 24 0 14.62 0 6.51 5.38 2.56 13.22l7.98 6.19C12.43 13.72 17.74 9.5 24 9.5z"></path>
+					<path fill="#4285F4" d="M46.98 24.55c0-1.57-.15-3.09-.38-4.55H24v9.02h12.94c-.58 2.96-2.26 5.48-4.78 7.18l7.73 6c4.51-4.18 7.09-10.36 7.09-17.65z"></path>
+					<path fill="#FBBC05" d="M10.53 28.59c-.48-1.45-.76-2.99-.76-4.59s.27-3.14.76-4.59l-7.98-6.19C.92 16.46 0 20.12 0 24c0 3.88.92 7.54 2.56 10.78l7.97-6.19z"></path>
+					<path fill="#34A853" d="M24 48c6.48 0 11.93-2.13 15.89-5.81l-7.73-6c-2.15 1.45-4.92 2.3-8.16 2.3-6.26 0-11.57-4.22-13.47-9.91l-7.98 6.19C6.51 42.62 14.62 48 24 48z"></path>
+				</svg>
+			</figcaption>
+		</figure>
+
+		<p class="more">
+			<ExternalLink class="text-link" href={GOOGLE_REVIEWS_URL}>Lire tous les avis sur Google</ExternalLink>
+		</p>
+	</div>
+</section>
+
+<style>
+	/* Mobile : titre, avis, lien. Bureau : titre et lien à gauche, avis à droite. */
+	.layout {
+		display: grid;
+		grid-template-areas:
+			'head'
+			'card'
+			'more';
+		row-gap: 1.75rem;
+	}
+	.head {
+		grid-area: head;
+	}
+	.card {
+		grid-area: card;
+	}
+	.more {
+		grid-area: more;
+	}
+	@media (min-width: 48rem) {
+		.layout {
+			grid-template-columns: minmax(18rem, 1fr) 1.4fr;
+			grid-template-rows: auto 1fr;
+			grid-template-areas:
+				'head card'
+				'more card';
+			column-gap: 4rem;
+			row-gap: 1rem;
+			align-items: start;
+		}
+	}
+
+	.title {
+		display: flex;
+		align-items: center;
+		gap: 0.75rem;
+	}
+	.g-logo {
+		width: 0.85em;
+		height: 0.85em;
+		flex: none;
+	}
+	.g-logo-sm {
+		width: 1.25rem;
+		height: 1.25rem;
+		margin-left: auto;
+		align-self: flex-start;
+	}
+
+	/* Carte d’avis : anatomie familière d’un avis Google, avec les jetons du site. */
+	.card {
+		display: flex;
+		flex-direction: column;
+		gap: 1rem;
+		max-width: 40rem;
+		margin: 0;
+		padding: clamp(1.25rem, 3vw, 2rem);
+		background: var(--color-surface);
+		border: 1px solid var(--color-line-strong);
+		border-radius: 0.5rem;
+	}
+	/* La signature s’affiche en tête, mais suit la citation dans l’ordre de lecture. */
+	.byline {
+		order: -2;
+		display: flex;
+		align-items: center;
+		gap: 0.75rem;
+	}
+	.stars {
+		order: -1;
+		display: flex;
+		gap: 0.2rem;
+	}
+	.avatar {
+		display: grid;
+		place-items: center;
+		width: 2.75rem;
+		height: 2.75rem;
+		flex: none;
+		border-radius: 50%;
+		background: var(--color-ink);
+		color: var(--color-page);
+		font-weight: 700;
+		font-size: 1.125rem;
+		line-height: 1;
+	}
+	.who {
+		display: flex;
+		flex-direction: column;
+		line-height: 1.3;
+	}
+	.name {
+		font-weight: 700;
+	}
+	.source {
+		color: var(--color-ink-soft);
+		font-size: 0.9375rem;
+	}
+	.star {
+		width: 1.35rem;
+		height: 1.35rem;
+		fill: transparent;
+		stroke: var(--color-ink);
+		stroke-width: 1.5;
+		stroke-linejoin: round;
+	}
+	.star.is-full {
+		fill: var(--color-action);
+	}
+	.quote {
+		margin: 0;
+		font-size: clamp(1.0625rem, 1rem + 0.3vw, 1.1875rem);
+		line-height: 1.55;
+	}
+</style>

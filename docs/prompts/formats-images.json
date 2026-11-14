@@ -1,0 +1,94 @@
+{
+  "createdOn": "2026-11-11",
+  "generator": "Built-in image_gen tool",
+  "useCase": "photorealistic-natural",
+  "purpose": "Three small photographic options for each of the three service formats shown on Vivimoves: cours réguliers, ateliers ponctuels de bien-être et de prévention, mini-retraites d’équipe. All scenes contain no people.",
+  "format": "webp",
+  "width": 768,
+  "height": 576,
+  "aspectRatio": "4:3",
+  "webpQuality": 84,
+  "images": [
+    {
+      "file": "src/assets/entreprises/format-ateliers-01.webp",
+      "service": "ateliers",
+      "width": 768,
+      "height": 576,
+      "bytes": 59550,
+      "alt": "Bureau préparé pour un atelier sur la posture avec chaise, ordinateur et balle de mobilité.",
+      "prompt": "Use case: photorealistic-natural.\nAsset type: small photographic thumbnail for a service card on Vivimoves, a French workplace movement and wellbeing website. Generate ONE standalone photograph, landscape 4:3, 1024x768, not a collage or website screenshot. Bright natural daylight, warm cream, sand and oak, small muted ochre accents, understated contemporary French office style. Minimal greenery. Calm, welcoming, authentic materials, no luxury-spa clichés. Simple composition with one clear subject that stays legible at 250–350 pixels wide, uncluttered background, key objects centered with comfortable crop margins. Natural realistic proportions and textures, restrained photographic depth of field. STRICTLY NO PEOPLE: no humans, hands, feet, body parts, faces, silhouettes, human shadows or people in mirrors, photographs, windows or reflections. No mannequins. No text, lettering, logos, branding, watermark, labels, UI, panels or borders. Any notebook pages and equipment surfaces are blank and unbranded.\nAteliers ponctuels de bien-être et de prévention, option 1, body at the office: a clean oak desk corner with an unbranded closed laptop, a small cork mobility massage ball and a simple folded resistance band, with an empty ergonomic office chair clearly visible behind it. Warm bright window light, cream workplace setting. One simple readable composition centered on the ergonomic workplace and the two mobility props, no medical equipment, no people, nothing on the screen."
+    },
+    {
+      "file": "src/assets/entreprises/format-ateliers-02.webp",
+      "service": "ateliers",
+      "width": 768,
+      "height": 576,
+      "bytes": 55370,
+      "alt": "Fruits, flocons d’avoine et noix disposés pour un atelier sur l’alimentation au bureau.",
+      "prompt": "Use case: photorealistic-natural.\nAsset type: small photographic thumbnail for a service card on Vivimoves, a French workplace movement and wellbeing website. Generate ONE standalone photograph, landscape 4:3, 1024x768, not a collage or website screenshot. Bright natural daylight, warm cream, sand and oak, small muted ochre accents, understated contemporary French office style. Minimal greenery. Calm, welcoming, authentic materials, no luxury-spa clichés. Simple composition with one clear subject that stays legible at 250–350 pixels wide, uncluttered background, key objects centered with comfortable crop margins. Natural realistic proportions and textures, restrained photographic depth of field. STRICTLY NO PEOPLE: no humans, hands, feet, body parts, faces, silhouettes, human shadows or people in mirrors, photographs, windows or reflections. No mannequins. No text, lettering, logos, branding, watermark, labels, UI, panels or borders. Any notebook pages and equipment surfaces are blank and unbranded.\nAteliers ponctuels de bien-être et de prévention, option 2, nutrition: a modest practical nutrition workshop still life on a light oak workplace table. One shallow cream ceramic bowl with a whole apple and pear, two small unlabeled glass bowls containing rolled oats and walnuts, a clear carafe of water and one blank open notebook partly visible at the edge. Fresh natural food textures, three-quarter overhead view. A small portion of an empty meeting room softly blurred behind; warm bright daylight, no packaged brands, no people, not a lavish restaurant meal."
+    },
+    {
+      "file": "src/assets/entreprises/format-ateliers-03.webp",
+      "service": "ateliers",
+      "width": 768,
+      "height": 576,
+      "bytes": 44260,
+      "alt": "Masque de repos en lin et réveil sobre sur une table préparée pour un atelier sur le sommeil.",
+      "prompt": "Use case: photorealistic-natural.\nAsset type: small photographic thumbnail for a service card on Vivimoves, a French workplace movement and wellbeing website. Generate ONE standalone photograph, landscape 4:3, 1024x768, not a collage or website screenshot. Bright natural daylight, warm cream, sand and oak, small muted ochre accents, understated contemporary French office style. Minimal greenery. Calm, welcoming, authentic materials, no luxury-spa clichés. Simple composition with one clear subject that stays legible at 250–350 pixels wide, uncluttered background, key objects centered with comfortable crop margins. Natural realistic proportions and textures, restrained photographic depth of field. STRICTLY NO PEOPLE: no humans, hands, feet, body parts, faces, silhouettes, human shadows or people in mirrors, photographs, windows or reflections. No mannequins. No text, lettering, logos, branding, watermark, labels, UI, panels or borders. Any notebook pages and equipment surfaces are blank and unbranded.\nAteliers ponctuels de bien-être et de prévention, option 3, sleep workshop: a simple linen sleep mask resting on a folded cream cloth, a small minimalist analog clock with plain tick marks and no numerals or brand, and a closed blank cream notebook on a pale oak workshop table. Soft luminous daytime window light. In background, only a softly blurred cream office meeting-room chair, not a bedroom or hotel. An uncluttered sleep-awareness workshop still life, no people, no candles, no pharmaceuticals."
+    },
+    {
+      "file": "src/assets/entreprises/format-cours-reguliers-01.webp",
+      "service": "cours-reguliers",
+      "width": 768,
+      "height": 576,
+      "bytes": 68708,
+      "alt": "Tapis de mouvement et briques en liège préparés pour un cours dans une salle de bureaux lumineuse.",
+      "prompt": "Use case: photorealistic-natural.\nAsset type: small photographic thumbnail for a service card on Vivimoves, a French workplace movement and wellbeing website. Generate ONE standalone photograph, landscape 4:3, 1024x768, not a collage or website screenshot. Bright natural daylight, warm cream, sand and oak, small muted ochre accents, understated contemporary French office style. Minimal greenery. Calm, welcoming, authentic materials, no luxury-spa clichés. Simple composition with one clear subject that stays legible at 250–350 pixels wide, uncluttered background, key objects centered with comfortable crop margins. Natural realistic proportions and textures, restrained photographic depth of field. STRICTLY NO PEOPLE: no humans, hands, feet, body parts, faces, silhouettes, human shadows or people in mirrors, photographs, windows or reflections. No mannequins. No text, lettering, logos, branding, watermark, labels, UI, panels or borders. Any notebook pages and equipment surfaces are blank and unbranded.\nCours réguliers, option 1: an empty light-filled office wellbeing room prepared for a recurring yoga or Pilates class. Three warm neutral exercise mats laid neatly in parallel with clear space between them, two simple cork yoga blocks beside the nearest mat. Pale oak floor and cream wall, a small portion of an office glass partition in background. Low diagonal view emphasizing the nearest mat and cork texture. Keep the scene modest and practical; no people anywhere."
+    },
+    {
+      "file": "src/assets/entreprises/format-cours-reguliers-02.webp",
+      "service": "cours-reguliers",
+      "width": 768,
+      "height": 576,
+      "bytes": 52474,
+      "alt": "Tapis roulé, anneau de Pilates et gourde prêts pour une séance régulière.",
+      "prompt": "Use case: photorealistic-natural.\nAsset type: small photographic thumbnail for a service card on Vivimoves, a French workplace movement and wellbeing website. Generate ONE standalone photograph, landscape 4:3, 1024x768, not a collage or website screenshot. Bright natural daylight, warm cream, sand and oak, small muted ochre accents, understated contemporary French office style. Minimal greenery. Calm, welcoming, authentic materials, no luxury-spa clichés. Simple composition with one clear subject that stays legible at 250–350 pixels wide, uncluttered background, key objects centered with comfortable crop margins. Natural realistic proportions and textures, restrained photographic depth of field. STRICTLY NO PEOPLE: no humans, hands, feet, body parts, faces, silhouettes, human shadows or people in mirrors, photographs, windows or reflections. No mannequins. No text, lettering, logos, branding, watermark, labels, UI, panels or borders. Any notebook pages and equipment surfaces are blank and unbranded.\nCours réguliers, option 2: close editorial still life of one rolled sand-colored exercise mat with a simple fabric carry strap, one dark unbranded Pilates ring resting beside it and a plain matte ochre water bottle on a low pale-oak bench in a bright office exercise corner. The equipment is the only focal subject; cream wall and window light in soft background. Realistic Pilates ring shape with two opposite padded grips. No clutter and no people."
+    },
+    {
+      "file": "src/assets/entreprises/format-cours-reguliers-03.webp",
+      "service": "cours-reguliers",
+      "width": 768,
+      "height": 576,
+      "bytes": 61192,
+      "alt": "Chaussures de running et gourde sur un banc de terrasse de bureaux, prêtes pour une sortie.",
+      "prompt": "Use case: photorealistic-natural.\nAsset type: small photographic thumbnail for a service card on Vivimoves, a French workplace movement and wellbeing website. Generate ONE standalone photograph, landscape 4:3, 1024x768, not a collage or website screenshot. Bright natural daylight, warm cream, sand and oak, small muted ochre accents, understated contemporary French office style. Minimal greenery. Calm, welcoming, authentic materials, no luxury-spa clichés. Simple composition with one clear subject that stays legible at 250–350 pixels wide, uncluttered background, key objects centered with comfortable crop margins. Natural realistic proportions and textures, restrained photographic depth of field. STRICTLY NO PEOPLE: no humans, hands, feet, body parts, faces, silhouettes, human shadows or people in mirrors, photographs, windows or reflections. No mannequins. No text, lettering, logos, branding, watermark, labels, UI, panels or borders. Any notebook pages and equipment surfaces are blank and unbranded.\nCours réguliers, option 3: a pair of unbranded neutral-colored running shoes, clearly empty, and one plain sand-colored reusable water bottle placed neatly on a clean wooden bench of a bright office terrace. A subtle glass office facade and pale blue sky softly blurred in background, little or no vegetation. Close diagonal product-like editorial framing, shoes and bottle large enough to read at thumbnail size. Running practice ready to begin, no people, no feet in shoes."
+    },
+    {
+      "file": "src/assets/entreprises/format-mini-retraites-01.webp",
+      "service": "mini-retraites",
+      "width": 768,
+      "height": 576,
+      "bytes": 53218,
+      "alt": "Espace calme préparé pour une mini-retraite d’équipe, avec tapis et coussins près de grandes fenêtres.",
+      "prompt": "Use case: photorealistic-natural.\nAsset type: small photographic thumbnail for a service card on Vivimoves, a French workplace movement and wellbeing website. Generate ONE standalone photograph, landscape 4:3, 1024x768, not a collage or website screenshot. Bright natural daylight, warm cream, sand and oak, small muted ochre accents, understated contemporary French office style. Minimal greenery. Calm, welcoming, authentic materials, no luxury-spa clichés. Simple composition with one clear subject that stays legible at 250–350 pixels wide, uncluttered background, key objects centered with comfortable crop margins. Natural realistic proportions and textures, restrained photographic depth of field. STRICTLY NO PEOPLE: no humans, hands, feet, body parts, faces, silhouettes, human shadows or people in mirrors, photographs, windows or reflections. No mannequins. No text, lettering, logos, branding, watermark, labels, UI, panels or borders. Any notebook pages and equipment surfaces are blank and unbranded.\nMini-retraites d’équipe, option 1: a quiet empty daytime retreat meeting space, with three cream floor cushions on three sand exercise mats arranged in a small welcoming semicircle, one low oak table with a clear water carafe. A large bright window, pale walls and warm wood, discreet contemporary office architecture beyond, very little greenery. Medium-wide view, a simple intimate setting for colleagues to pause and move together for half a day, not a large yoga studio or spa."
+    },
+    {
+      "file": "src/assets/entreprises/format-mini-retraites-02.webp",
+      "service": "mini-retraites",
+      "width": 768,
+      "height": 576,
+      "bytes": 57654,
+      "alt": "Terrasse calme de bureaux préparée avec tapis et plaids pour une pause d’équipe en plein air.",
+      "prompt": "Use case: photorealistic-natural.\nAsset type: small photographic thumbnail for a service card on Vivimoves, a French workplace movement and wellbeing website. Generate ONE standalone photograph, landscape 4:3, 1024x768, not a collage or website screenshot. Bright natural daylight, warm cream, sand and oak, small muted ochre accents, understated contemporary French office style. Minimal greenery. Calm, welcoming, authentic materials, no luxury-spa clichés. Simple composition with one clear subject that stays legible at 250–350 pixels wide, uncluttered background, key objects centered with comfortable crop margins. Natural realistic proportions and textures, restrained photographic depth of field. STRICTLY NO PEOPLE: no humans, hands, feet, body parts, faces, silhouettes, human shadows or people in mirrors, photographs, windows or reflections. No mannequins. No text, lettering, logos, branding, watermark, labels, UI, panels or borders. Any notebook pages and equipment surfaces are blank and unbranded.\nMini-retraites d’équipe, option 2: an empty sunlit office rooftop terrace prepared for a small team break, with two neatly unrolled warm-neutral movement mats beside a simple timber bench holding two folded linen blankets and a small tray with two unbranded water glasses. Minimal slim railing, pale blue open sky, cream stone paving, a small strip of glass office facade. No forest, no leafy canopy, no abundant greenery. An airy uncluttered inviting pause outside, no people."
+    },
+    {
+      "file": "src/assets/entreprises/format-mini-retraites-03.webp",
+      "service": "mini-retraites",
+      "width": 768,
+      "height": 576,
+      "bytes": 52546,
+      "alt": "Tasses et carnets disposés sur une table pour un temps d’échange pendant une mini-retraite d’équipe.",
+      "prompt": "Use case: photorealistic-natural.\nAsset type: small photographic thumbnail for a service card on Vivimoves, a French workplace movement and wellbeing website. Generate ONE standalone photograph, landscape 4:3, 1024x768, not a collage or website screenshot. Bright natural daylight, warm cream, sand and oak, small muted ochre accents, understated contemporary French office style. Minimal greenery. Calm, welcoming, authentic materials, no luxury-spa clichés. Simple composition with one clear subject that stays legible at 250–350 pixels wide, uncluttered background, key objects centered with comfortable crop margins. Natural realistic proportions and textures, restrained photographic depth of field. STRICTLY NO PEOPLE: no humans, hands, feet, body parts, faces, silhouettes, human shadows or people in mirrors, photographs, windows or reflections. No mannequins. No text, lettering, logos, branding, watermark, labels, UI, panels or borders. Any notebook pages and equipment surfaces are blank and unbranded.\nMini-retraites d’équipe, option 3: a calm small-group retreat pause, close view of a warm oak communal table with three simple cream ceramic tea cups, a modest clear water carafe and two closed blank linen-covered notebooks arranged naturally with breathing room. Empty chairs around the table. In softly blurred background, two neatly rolled exercise mats on a low bench beside a large bright window connect conversation with movement. Contemporary modest meeting space, warm daylight, not a restaurant or luxury spa, no people anywhere."
+    }
+  ]
+}

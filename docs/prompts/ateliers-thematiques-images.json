@@ -1,0 +1,40 @@
+{
+  "createdOn": "2026-11-11",
+  "generator": "Built-in image_gen tool",
+  "useCase": "photorealistic-natural",
+  "purpose": "One small photograph for each specific workplace wellbeing workshop, with no people: Mon corps au bureau, Mieux manger au travail, Mieux dormir, mieux récupérer.",
+  "format": "webp",
+  "width": 768,
+  "height": 576,
+  "aspectRatio": "4:3",
+  "webpQuality": 84,
+  "images": [
+    {
+      "file": "src/assets/entreprises/atelier-mieux-manger-au-travail.webp",
+      "workshop": "Mieux manger au travail",
+      "width": 768,
+      "height": 576,
+      "bytes": 88220,
+      "alt": "Déjeuner préparé pour le bureau avec céréales, légumes, pois chiches, fruit et eau.",
+      "prompt": "Use case: photorealistic-natural.\nAsset type: a small editorial photograph for one workshop card on Vivimoves, a French workplace wellbeing website. Generate ONE standalone landscape photograph, 4:3, not a collage or a page screenshot. Simple clear composition that remains legible at 300 pixels wide, comfortable crop margins. Natural inviting light, warm cream and light oak with subtle sand and ochre accents, realistic material textures, modest contemporary setting. Strictly NO PEOPLE: no human bodies, faces, hands, silhouettes, human shadows, portraits or people in screens, mirrors, windows or reflections. No text, lettering, logos, watermarks, packaging labels, UI or borders. All paper and notebook covers are blank and equipment unbranded. Do not include a printed body diagram. Focus on the specific workshop theme rather than general decoration.\nWorkshop: Mieux manger au travail — composing a practical lunch, snacks and hydration at work. A realistic homemade work lunch on a light oak office lunch table: one open unbranded reusable lunchbox with naturally arranged cooked grain, chickpeas, colorful cooked vegetables and leafy greens; beside it one whole apple, a small plain bowl of walnuts and a clear water bottle or drinking glass. A simple fork rests alongside the lunchbox. In the soft background a closed unbranded laptop or empty office chair gives an understated workplace cue. Three-quarter overhead photograph, not a flat infographic. The lunchbox is the clear focal subject and occupies the central frame. Warm midday natural light, practical appetizing food portions, no exaggerated feast, no supplements or product packaging, no people or hands."
+    },
+    {
+      "file": "src/assets/entreprises/atelier-mon-corps-au-bureau.webp",
+      "workshop": "Mon corps au bureau",
+      "width": 768,
+      "height": 576,
+      "bytes": 56568,
+      "alt": "Poste de travail avec chaise réglable, écran surélevé et repose-pieds pour un atelier sur le corps au bureau.",
+      "prompt": "Use case: photorealistic-natural.\nAsset type: a small editorial photograph for one workshop card on Vivimoves, a French workplace wellbeing website. Generate ONE standalone landscape photograph, 4:3, not a collage or a page screenshot. Simple clear composition that remains legible at 300 pixels wide, comfortable crop margins. Natural inviting light, warm cream and light oak with subtle sand and ochre accents, realistic material textures, modest contemporary setting. Strictly NO PEOPLE: no human bodies, faces, hands, silhouettes, human shadows, portraits or people in screens, mirrors, windows or reflections. No text, lettering, logos, watermarks, packaging labels, UI or borders. All paper and notebook covers are blank and equipment unbranded. Do not include a printed body diagram. Focus on the specific workshop theme rather than general decoration.\nWorkshop: Mon corps au bureau — posture, workstation setup and active breaks. Show an empty, well-organized real office workstation viewed at a clear three-quarter angle. A simple height-adjustable ergonomic upholstered desk chair, a monitor on a modest oak riser with a completely dark blank screen, separate keyboard and mouse, and a small simple wooden footrest under the desk, all clearly visible. A plain neutral reusable water bottle at the corner of the desk. The floor next to the chair is open and uncluttered, suggesting room to stand and move. Desk and chair are the main focal subject, not a close-up of accessories. Large-window daylight, cream walls and pale oak, minimal greenery. Show natural and believable workstation proportions; no medical gear, no exercise machines, no people."
+    },
+    {
+      "file": "src/assets/entreprises/atelier-mieux-dormir-recuperer.webp",
+      "workshop": "Mieux dormir, mieux récupérer",
+      "width": 768,
+      "height": 576,
+      "bytes": 64396,
+      "alt": "Coin de repos avec lampe douce, livre fermé et téléphone retourné pour évoquer la déconnexion avant le sommeil.",
+      "prompt": "Use case: photorealistic-natural.\nAsset type: a small editorial photograph for one workshop card on Vivimoves, a French workplace wellbeing website. Generate ONE standalone landscape photograph, 4:3, not a collage or a page screenshot. Simple clear composition that remains legible at 300 pixels wide, comfortable crop margins. Natural inviting light, warm cream and light oak with subtle sand and ochre accents, realistic material textures, modest contemporary setting. Strictly NO PEOPLE: no human bodies, faces, hands, silhouettes, human shadows, portraits or people in screens, mirrors, windows or reflections. No text, lettering, logos, watermarks, packaging labels, UI or borders. All paper and notebook covers are blank and equipment unbranded. Do not include a printed body diagram. Focus on the specific workshop theme rather than general decoration.\nWorkshop: Mieux dormir, mieux récupérer — evening light, screen disconnection and rest. A quiet simple bedside still life on a pale oak table beside the edge of a neatly made cream-linen bed. A small warm dimmed lamp, one closed blank linen-covered book, a smartphone resting FACE DOWN with a completely plain unbranded back and no visible camera logo, and a simple linen sleep mask resting on the book. Soft pale-blue evening light through a window mixes gently with warm amber lamplight, luminous and readable rather than dark. The image should immediately suggest preparing for sleep and putting screens aside. Compact uncluttered composition with the bedside objects central, warm quiet home atmosphere, not a luxury spa, hotel ad or medical scene. No people, pills, candles, text, clock numerals or screens facing the camera."
+    }
+  ]
+}

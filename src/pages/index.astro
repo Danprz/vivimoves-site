@@ -1,173 +1,89 @@
 ---
-import BaseHead from '../components/BaseHead.astro';
-import Header from '../components/Header.astro';
-import Footer from '../components/Footer.astro';
-import { SITE_TITLE, SITE_DESCRIPTION } from '../consts';
+import BaseLayout from '../layouts/BaseLayout.astro';
+import Cta from '../components/Cta.astro';
+import ContactBand from '../components/ContactBand.astro';
+import FormatsBand from '../components/FormatsBand.astro';
+import ProjectSteps from '../components/ProjectSteps.astro';
+import GoogleReview from '../components/GoogleReview.astro';
+import { Image } from 'astro:assets';
+import heroPhoto from '../assets/entreprises/hero-terrasse-coach-03.webp';
+import clubPhoto from '../assets/club-seance-terrasse.jpg';
+import { reviewFor } from '../data/reviews';
+import { SITE_DESCRIPTION, SITE_TITLE } from '../consts';
 ---
 
-<!doctype html>
-<html lang="en">
-  <head>
-    <BaseHead title={SITE_TITLE} description={SITE_DESCRIPTION} />
-  </head>
-  <body class="antialiased">
-    <Header />
+<BaseLayout title={`${SITE_TITLE} · Mouvement et bien-être en entreprise`} description={SITE_DESCRIPTION}>
+	<section class="hero on-dark">
+		<Image
+			src={heroPhoto}
+			alt=""
+			widths={[640, 960, 1280, 1672]}
+			sizes="100vw"
+			class="hero-photo"
+			loading="eager"
+			fetchpriority="high"
+		/>
+		<div class="hero-veil" aria-hidden="true"></div>
+		<div class="wrap hero-content">
+			<div class="hero-text">
+				<p class="hero-brand">{SITE_TITLE}</p>
+				<h1 class="mt-4">Le bien-être par le mouvement, au cœur de vos équipes</h1>
+				<p class="lede mt-6">
+					{SITE_TITLE} vous propose des solutions clés en main pour offrir à vos équipes de vraies
+					pauses bien-être, dans le Val-d’Oise.
+				</p>
+				<p class="mt-8">
+					<Cta href="/entreprises/">Découvrir nos solutions</Cta>
+				</p>
+			</div>
+			<p class="hero-credit">Image d’illustration</p>
+		</div>
+	</section>
 
-    <!-- ⬇︎ nota la clase .home que usamos en el override CSS -->
-    <main class="home">
-      <!-- HERO ----------------------------------------------------------->
-      <section
-      class="bg-[#FFFFFF]                      /* tono extra-light */
-            relative                          /* para posicionar la sombra */
-            w-full px-4 py-16
-            grid grid-cols-1 md:grid-cols-2 gap-10 items-center">
-      <div>
-        <img
-          src="/vivi.jpg"
-          alt="Retrato de Vivi"
-          width="800"
-          height="533"
-          loading="lazy"
-          class="w-full rounded-xl object-cover shadow-lg"
-        />
-      </div>
+	<FormatsBand />
 
-      <!-- Columna 2 · TEXTO -->
-      <div class="max-w-prose space-y-6">
+	<ProjectSteps />
 
-        <!-- Título -->
-        <h1 class="text-5xl font-extrabold text-peach-900">
-          Virginia 
-        </h1>
-        <h2>
-          Instructrice de Pilates & Mobilité 
-        </h2>
-        <!-- Todos los párrafos heredan color y tipografía -->
-        <div class="text-peach-900 text-lg md:text-xl leading-relaxed">
-          <p>
-            Coach sportive certifiée, spécialisée en mobilité articulaire et en
-            Pilates (mat&nbsp;&amp;&nbsp;reformer), j’enseigne le mouvement comme un
-            outil de prévention, d’exploration et de liberté.
-          </p>
-      
-          <p>
-            Mon approche repose sur la conscience corporelle, l’écoute des
-            sensations et l’envie de construire un corps mobile, fort et fluide.
-            Je crois aux micro-changements, aux routines simples et au plaisir de
-            bouger sans se faire mal.
-          </p>
-      
-          <p>
-            Ma pratique s’adresse à toutes celles et ceux qui veulent bouger mieux,
-            pas forcément plus&nbsp;: prévenir les douleurs, retrouver de l’énergie,
-            ou simplement se reconnecter à leur corps. Pas besoin d’être souple ou
-            sportif·ve pour commencer&nbsp;— juste l’envie d’explorer, pas à pas,
-            ce que votre corps peut faire pour vous.
-          </p>
-      
-          <p>
-            <strong>Mon objectif&nbsp;:</strong> vous aider à intégrer le mouvement
-            dans votre quotidien, avec simplicité, curiosité et plaisir.
-          </p>
-        </div>
-      </div>
-    </section>
-      <!-- SECCIÓN ESTILO “CARDS” ------------------------------------------>
-      <section class="bg-[#FFD6BA] py-20">
-        <div class="max-w-6xl mx-auto px-2">
-          <!-- Título -->
+	<GoogleReview review={reviewFor('accueil')} tone="sunk" />
 
-          <!-- Tarjetas -->
-          <div class="grid gap-10 sm:grid-cols-2 md:grid-cols-3">
-            <!-- Yoga ------------------------------------------------------->
-            <div
-              class="flex flex-col items-center rounded-2xl bg-white shadow-xl p-10
-                    transition hover:-translate-y-2 hover:shadow-2xl"
-            >
-              <img
-                src="/yoga.png"
-                alt="Yoga"
-                class="h-24 w-24 object-contain mb-6"
-              />
-              <h3 class="text-2xl font-semibold mb-4 text-center">Pilates &amp; Mobilité</h3>
-              <p class="text-center text-[#331c10]/70 mb-8">
-                Gagne en mobilité articulaire<br/>et en conscience du corps.
-              </p>
-              <a
-                href="/services"
-                class="mt-auto inline-block rounded-lg bg-[#d89a6b] px-6 py-3
-                !text-black font-semibold tracking-wide no-underline
-                hover:!text-white hover:bg-[#331c10]"
-                >
-                Découvrir
-              </a>
-            </div>
+	<section class="on-accent bg-action">
+		<div class="wrap section grid gap-10 md:grid-cols-2 md:items-center md:gap-16">
+			<Image
+				quality={60}
+				src={clubPhoto}
+				alt="Séance de Pilates du PR Club en plein air : une quinzaine de personnes sur des tapis, sur une terrasse en bois au bord de l’eau."
+				widths={[480, 768, 1024]}
+				sizes="(min-width: 48rem) 34rem, 100vw"
+				class="aspect-[3/2] w-full rounded-lg border-2 border-ink object-cover"
+				loading="lazy"
+			/>
+			<div>
+				<h2>Pilates et running à Cergy-Pontoise</h2>
+				<p class="lede mt-5">
+					Des cours de Pilates sur tapis et Reformer chaque semaine à Pontoise, et Le PR Club
+					pour courir et bouger ensemble.
+				</p>
+				<p class="mt-6">
+					<Cta href="/le-pr-club/" variant="secondary">Trouver un cours</Cta>
+				</p>
+			</div>
+		</div>
+	</section>
 
-            <!-- Pilates ---------------------------------------------------->
-            <div
-              class="flex flex-col items-center rounded-2xl bg-white shadow-xl p-10
-                    transition hover:-translate-y-2 hover:shadow-2xl"
-            >
-              <svg
-                class="h-24 w-24 object-contain mb-6"
-                viewBox="0 0 24 24"
-                fill="none"
-                stroke="#331c10"
-                stroke-width="1.6"
-                stroke-linecap="round"
-                stroke-linejoin="round"
-                role="img"
-                aria-label="Renforcement musculaire"
-              >
-                <path d="M7 12h10" />
-                <path d="M7 7v10" />
-                <path d="M17 7v10" />
-                <path d="M4 8.5v7" />
-                <path d="M20 8.5v7" />
-              </svg>
-              <h3 class="text-2xl font-semibold mb-4 text-center">Renforcement musculaire</h3>
-              <p class="text-center text-gray-600 mb-8">
-                Développe ta force et ta stabilité<br/>avec un travail musculaire ciblé.
-              </p>
-              <a
-                href="/services"
-                class="mt-auto inline-block rounded-lg bg-[#d89a6b] px-6 py-3
-                !text-black font-semibold tracking-wide no-underline
-                hover:!text-white hover:bg-[#331c10]"
-              >
-                Participer
-              </a>
-            </div>
+	<ContactBand />
+</BaseLayout>
 
-            <!-- Running ---------------------------------------------------->
-            <div
-              class="flex flex-col items-center rounded-2xl bg-white shadow-xl p-10
-                    transition hover:-translate-y-2 hover:shadow-2xl"
-            >
-              <img
-                src="/runner.png"
-                alt="Running"
-                class="h-24 w-24 object-contain mb-6"
-              />
-              <h3 class="text-2xl font-semibold mb-4 text-center">Running</h3>
-              <p class="text-center text-gray-600 mb-8">
-                Programmes cardio pour<br/>repousser tes limites.
-              </p>
-              <a
-                href="/services"
-                class="mt-auto inline-block rounded-lg bg-[#d89a6b] px-6 py-3
-                !text-black font-semibold tracking-wide no-underline
-                hover:!text-white hover:bg-[#331c10]"
-              >
-                S’inscrire
-              </a>
-            </div>
-          </div>
-        </div>
-      </section>
-      
-    </main>
-
-    <Footer />
-  </body>
-</html>
+<style>
+	.hero-brand {
+		color: var(--color-action);
+		font-weight: 700;
+		font-size: clamp(3rem, 2rem + 4.5vw, 5.5rem);
+		line-height: 1;
+		letter-spacing: -0.03em;
+	}
+	/* La marque domine le bloc ; le titre reste le h1, à l’échelle d’un h2. */
+	.hero h1 {
+		font-size: clamp(1.75rem, 1.3rem + 2vw, 2.75rem);
+		line-height: 1.15;
+	}
+</style>

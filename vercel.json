@@ -1,0 +1,7 @@
+{
+  "redirects": [
+    { "source": "/services", "destination": "/entreprises/", "permanent": true },
+    { "source": "/tarifs-coaching", "destination": "/entreprises/", "permanent": true },
+    { "source": "/pilates-plein-air", "destination": "/le-pr-club/", "permanent": true }
+  ]
+}

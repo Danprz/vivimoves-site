@@ -1,0 +1,217 @@
+---
+import { activities } from '../data/activities';
+import { ateliers } from '../data/ateliers';
+import { FORMSPREE_ENDPOINT, CONTACT_EMAIL, SITE_TITLE } from '../consts';
+---
+
+<div id="contact-form" class="contact-form">
+	<form action={FORMSPREE_ENDPOINT} method="POST" class="grid gap-6" data-contact-form>
+		<p class="text-ink-soft">Les champs sont obligatoires, sauf mention contraire.</p>
+
+		<input type="hidden" name="_subject" value={`Nouvelle demande entreprise — site ${SITE_TITLE}`} />
+		<p class="hp" aria-hidden="true">
+			<label>Ne pas remplir ce champ <input type="text" name="_gotcha" tabindex="-1" autocomplete="off" /></label>
+		</p>
+
+		<div class="field">
+			<label for="cf-name">Nom et prénom</label>
+			<input class="input" id="cf-name" name="name" type="text" autocomplete="name" required
+				data-error="Indiquez votre nom et votre prénom." />
+		</div>
+
+		<div class="field">
+			<label for="cf-email">E-mail</label>
+			<input class="input" id="cf-email" name="email" type="email" autocomplete="email" required
+				data-error="Indiquez une adresse e-mail valide, par exemple nom@entreprise.fr." />
+		</div>
+
+		<div class="field">
+			<label for="cf-company">Entreprise</label>
+			<input class="input" id="cf-company" name="company" type="text" autocomplete="organization" required
+				data-error="Indiquez le nom de votre entreprise." />
+		</div>
+
+		<div class="field">
+			<label for="cf-activity">Activité qui vous intéresse <span class="optional">(facultatif)</span></label>
+			<select class="input" id="cf-activity" name="activity">
+				<option value="">Pas encore défini</option>
+				<optgroup label="Cours réguliers">
+					{activities.map((activity) => <option value={activity.title} data-slug={activity.slug}>{activity.title}</option>)}
+				</optgroup>
+				<optgroup label="Ateliers ponctuels">
+					{ateliers.map((atelier) => (
+						<option value={`Atelier « ${atelier.title} »`} data-slug={atelier.slug}>Atelier «&nbsp;{atelier.title}&nbsp;»</option>
+					))}
+				</optgroup>
+				<optgroup label="Mini-retraites">
+					<option value="Mini-retraite d’équipe" data-slug="mini-retraite">Mini-retraite d’équipe</option>
+				</optgroup>
+			</select>
+		</div>
+
+		<div class="field">
+			<label for="cf-city">Ville de votre entreprise <span class="optional">(facultatif)</span></label>
+			<input class="input" id="cf-city" name="city" type="text" autocomplete="address-level2" />
+		</div>
+
+		<div class="field">
+			<label for="cf-message">Votre message</label>
+			<p class="hint" id="cf-message-hint">
+				Si vous le savez déjà : taille approximative du groupe, période souhaitée, format envisagé.
+			</p>
+			<textarea class="input" id="cf-message" name="message" rows="6" required aria-describedby="cf-message-hint"
+				data-error="Écrivez quelques mots sur votre demande."></textarea>
+		</div>
+
+		<div class="form-alert" role="alert" data-form-alert hidden>
+			<p>
+				<strong>L’envoi n’a pas abouti.</strong> Vos informations sont toujours là : vous pouvez
+				réessayer ou <a href={`mailto:${CONTACT_EMAIL}`}>nous écrire directement par e-mail</a>.
+			</p>
+		</div>
+
+		<div>
+			<button type="submit" class="btn btn-primary" data-submit>Envoyer ma demande</button>
+		</div>
+	</form>
+
+	<div class="form-success" role="status" data-form-success hidden>
+		<h2 tabindex="-1">Merci, votre message est bien parti.</h2>
+		<p class="mt-3">Nous le lirons avec attention et nous reviendrons vers vous.</p>
+	</div>
+</div>
+
+<script>
+	const form = document.querySelector<HTMLFormElement>('[data-contact-form]');
+	if (form) {
+		const submit = form.querySelector<HTMLButtonElement>('[data-submit]')!;
+		const alertBox = form.querySelector<HTMLElement>('[data-form-alert]')!;
+		const success = document.querySelector<HTMLElement>('[data-form-success]')!;
+		const submitLabel = submit.textContent ?? '';
+		type Field = HTMLInputElement | HTMLTextAreaElement;
+		const required = Array.from(form.querySelectorAll<Field>('[required]'));
+
+		// Présélection de l’activité transmise par les liens de la page Entreprises.
+		const slug = new URLSearchParams(window.location.search).get('activite');
+		const select = form.querySelector<HTMLSelectElement>('#cf-activity');
+		if (slug && select) {
+			const option = Array.from(select.options).find((item) => item.dataset.slug === slug);
+			if (option) select.value = option.value;
+		}
+
+		// La validation native reste le socle sans JavaScript ; ici, messages en français.
+		form.noValidate = true;
+
+		const errorId = (field: Field) => `${field.id}-error`;
+		const baseDescription = new Map(required.map((field) => [field, field.getAttribute('aria-describedby')]));
+
+		const clearError = (field: Field) => {
+			document.getElementById(errorId(field))?.remove();
+			field.removeAttribute('aria-invalid');
+			const base = baseDescription.get(field);
+			if (base) field.setAttribute('aria-describedby', base);
+			else field.removeAttribute('aria-describedby');
+		};
+
+		const showError = (field: Field) => {
+			clearError(field);
+			const message = document.createElement('p');
+			message.id = errorId(field);
+			message.className = 'field-error';
+			message.textContent = field.dataset.error ?? '';
+			field.insertAdjacentElement('afterend', message);
+			field.setAttribute('aria-invalid', 'true');
+			const base = baseDescription.get(field);
+			field.setAttribute('aria-describedby', base ? `${base} ${message.id}` : message.id);
+		};
+
+		const isValid = (field: Field) => field.value.trim() !== '' && field.checkValidity();
+
+		required.forEach((field) => {
+			field.addEventListener('input', () => {
+				if (field.getAttribute('aria-invalid') === 'true' && isValid(field)) clearError(field);
+			});
+		});
+
+		let sending = false;
+
+		form.addEventListener('submit', async (event) => {
+			event.preventDefault();
+			if (sending) return;
+
+			const invalid = required.filter((field) => !isValid(field));
+			required.forEach((field) => (invalid.includes(field) ? showError(field) : clearError(field)));
+			if (invalid.length > 0) {
+				invalid[0].focus();
+				return;
+			}
+
+			sending = true;
+			alertBox.hidden = true;
+			submit.disabled = true;
+			submit.setAttribute('aria-busy', 'true');
+			submit.textContent = 'Envoi en cours…';
+
+			let accepted = false;
+			try {
+				const response = await fetch(form.action, {
+					method: 'POST',
+					body: new FormData(form),
+					headers: { Accept: 'application/json' },
+					signal: AbortSignal.timeout(20000),
+				});
+				const result = await response.json().catch(() => null);
+				accepted = response.ok && result?.ok === true;
+			} catch {
+				accepted = false;
+			}
+
+			sending = false;
+			submit.disabled = false;
+			submit.removeAttribute('aria-busy');
+			submit.textContent = submitLabel;
+
+			if (accepted) {
+				form.hidden = true;
+				success.hidden = false;
+				success.querySelector<HTMLElement>('h2')?.focus();
+			} else {
+				alertBox.hidden = false;
+			}
+		});
+	}
+</script>
+
+<style>
+	.contact-form {
+		padding: clamp(1.25rem, 4vw, 2.5rem);
+		background: var(--color-surface);
+		border: 1px solid var(--color-line-strong);
+		border-radius: 0.75rem;
+	}
+	.hp {
+		position: absolute;
+		left: -9999px;
+		width: 1px;
+		height: 1px;
+		overflow: hidden;
+	}
+	textarea.input {
+		resize: vertical;
+	}
+	.form-alert {
+		padding: 1rem 1.25rem;
+		border: 2px solid var(--color-danger);
+		border-radius: 0.5rem;
+		color: var(--color-danger);
+	}
+	.form-alert a {
+		font-weight: 700;
+	}
+	.form-success h2 {
+		font-size: clamp(1.5rem, 1.2rem + 1.2vw, 2rem);
+	}
+	.form-success h2:focus {
+		outline: none;
+	}
+</style>

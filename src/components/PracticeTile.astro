@@ -1,0 +1,26 @@
+---
+import { Image } from 'astro:assets';
+import type { Activity } from '../data/activities';
+
+interface Props {
+	activity: Activity;
+	/** Les deux premières pratiques occupent une demi-ligne, les trois suivantes un tiers. */
+	size: 'large' | 'small';
+}
+
+const { activity, size } = Astro.props;
+---
+
+<li id={activity.slug} class:list={[size === 'large' ? 'md:col-span-3' : 'md:col-span-2']}>
+	<Image
+		quality={70}
+		src={activity.image}
+		alt={activity.alt}
+		widths={[480, 768, 1024]}
+		sizes={size === 'large' ? '(min-width: 48rem) 34rem, 100vw' : '(min-width: 48rem) 22rem, 100vw'}
+		class="aspect-[3/2] w-full rounded-lg object-cover"
+		loading="lazy"
+	/>
+	<h3 class="mt-4">{activity.title}</h3>
+	<p class="mt-1 text-ink-soft">{activity.line}</p>
+</li>
