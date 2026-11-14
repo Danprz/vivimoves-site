@@ -50,7 +50,7 @@ Las reglas `.hero`, `.hero-photo`, `.hero-veil`, `.hero-content`, `.hero-text` y
 - Mismo velo `color-mix(in srgb, var(--color-ink) 72%, transparent)`: el cielo de la fotografía es casi blanco, que es exactamente el peor caso ya medido en `DESIGN.md`, de modo que los contrastes documentados valen sin tocar el velo.
 - Sin línea de marca: el `h1` «Trouvez votre prochain cours à Cergy-Pontoise» va a la escala normal de `h1`, en crema, sin mayúsculas forzadas (las mayúsculas del borrador se interpretan como énfasis, no como estilo). «à Cergy-Pontoise» puede ir en mostaza como único acento, al ser texto grande (3,74:1 ≥ 3:1).
 - Dos párrafos: el de los cursos como `lede` y el del club en tamaño de cuerpo.
-- Accesos: dos botones ancla, «Pilates tapis» (`#pilates-tapis`, primario) y «Pilates Reformer» (`#pilates-reformer`, secundario sobre oscuro), y un `text-link` «Le PR Club» (`#le-pr-club`). No hay enlaces externos en el primer bloque: la reserva se decide con los horarios a la vista.
+- Accesos: dos botones ancla, «Pilates tapis» (`#pilates-tapis`, primario) y «Pilates Reformer» (`#pilates-reformer`, secundario sobre oscuro), y un tercer botón «Sorties running» (`#sorties-running`), con la misma forma que el de Reformer (cambio pedido por Virginia tras la primera versión). No hay enlaces externos en el primer bloque: la reserva se decide con los horarios a la vista.
 - La fotografía se recorta con `object-fit: cover`. `object-position` se ajusta para que la pasarela roja quede visible a la derecha del texto en escritorio y centrada en móvil; se verifica en 320, 375, 768 y 1440 px.
 - No lleva «Image d’illustration» (es una fotografía real del lugar). `alt=""`: es decorativa respecto al contenido, como en la portada.
 - La imagen se copia a `src/assets/cergy-pontoise.jpg` y se sirve con `<Image>` en `widths={[640, 960, 1134]}`, `loading="eager"` y `fetchpriority="high"`. No se generan anchos mayores que el original.
@@ -63,7 +63,7 @@ Horarios de partida (se asume que las horas indicadas son horas de inicio):
 
 | Curso | Lugar | Horarios |
 |---|---|---|
-| Pilates tapis | Centre Ann Lewis, 5 rue Alexandre Prachay, Pontoise | lundi 19h30 · mardi 19h30 · vendredi 12h30 |
+| Pilates tapis | Centre Ann Lewis, 5 rue Alexandre Prachay, Pontoise | lundi et mardi 19h30 (créneau du vendredi retiré à la demande de Virginia) |
 | Pilates Reformer | SI le Pilates, 24 rue Pierre Butin, Pontoise | mardi, mercredi, jeudi · 11h, 12h, 13h |
 
 *Alternativa descartada*: una Content Collection. Dos entradas con estructura fija no justifican un esquema de colección ni Markdown.
@@ -81,13 +81,13 @@ Botones: «Réserver un cours sur tapis» → `BOOKWHEN_URL`; «Réserver un cou
 
 ### 6. Bloque 4: Le PR Club
 
-Banda mostaza (`on-accent bg-action`) con `id="le-pr-club"`: `h2` «Le PR Club», una frase sobre la comunidad de Pilates y running de Cergy-Pontoise, la mención de las salidas running gratuitas y una línea «fondé par Virginia». Acción principal: botón «Suivre Le PR Club sur Instagram» (`btn` con la variante `.club-primary` ya existente, `ink` sobre mostaza). Acción secundaria: `text-link` «Voir les prochaines sorties» → `BOOKWHEN_URL`. Fotografía: `club-tshirt.jpg`.
+Revisado a petición de Virginia: el bloque deja la banda mostaza y sigue la lógica de los bloques de curso, sobre fondo `page`, con `id="sorties-running"` y `h2` «Sorties running». Una frase presenta Le PR Club como la comunidad de Pilates y running de Cergy-Pontoise, seguida de la mención de gratuidad y de una línea «fondé par Virginia». Acción principal: botón mostaza `btn-primary` «Suivre Le PR Club sur Instagram». Acción secundaria: `text-link` «Voir les prochaines sorties» → `BOOKWHEN_URL`. Fotografía: `club-sortie-running.webp` (tres personas de espaldas corriendo por la pasarela del Axe Majeur), atenuada con `saturate(0.7) brightness(0.92)`.
 
 El texto no promete fechas: remite a Instagram para saber cuándo es la próxima salida, lo que sigue siendo cierto con la agenda vacía.
 
 ### 7. Alternancia de fondos
 
-Primer bloque (fotografía, oscuro) → tapis (`page`) → Reformer (`sunk`) → club (mostaza) → reseña de Google (`tone="page"`) → banda de empresas (`ink`). No hay dos bandas mostaza contiguas ni dos bandas oscuras contiguas. `tone="club"` se mantiene en `BaseLayout`.
+Primer bloque (fotografía, oscuro) → tapis (`page`) → Reformer (`sunk`) → salidas running (`page`) → reseña de Google (`tone="sunk"`) → banda de empresas (`ink`). No hay dos bandas mostaza contiguas ni dos bandas oscuras contiguas. `tone="club"` se mantiene en `BaseLayout`.
 
 ### 8. «Bookwhen» fuera del texto visible
 

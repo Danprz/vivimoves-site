@@ -175,6 +175,23 @@
 	.on-dark .btn-primary:hover {
 		border-color: var(--color-action-hover);
 	}
+	/* Bouton contour crème, sur photographie voilée */
+	/* Rangée de boutons d’ancre des premiers blocs (cours, entreprises) */
+	.raccourcis {
+		display: flex;
+		flex-wrap: wrap;
+		align-items: center;
+		gap: 0.75rem 1rem;
+	}
+	.btn-ghost {
+		border-color: var(--color-page);
+		background: transparent;
+		color: var(--color-page);
+	}
+	.btn-ghost:hover {
+		background: var(--color-page);
+		color: var(--color-ink);
+	}
 	.btn[disabled],
 	.btn[aria-disabled="true"] {
 		cursor: progress;

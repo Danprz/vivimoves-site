@@ -9,6 +9,8 @@ import GoogleReview from '../components/GoogleReview.astro';
 import { activities } from '../data/activities';
 import { ateliers } from '../data/ateliers';
 import { reviewFor } from '../data/reviews';
+import { Image } from 'astro:assets';
+import heroPhoto from '../assets/entreprises/hero-studio-move-breathe.webp';
 import { SITE_TITLE, ZONE_SENTENCE } from '../consts';
 
 // Un exemple adaptable : ni horaires, ni lieu, ni nombre de participants.
@@ -24,22 +26,43 @@ const retreatSteps = [
 	title={`Bien-être en entreprise : cours, ateliers et mini-retraites · ${SITE_TITLE}`}
 	description="Cours réguliers de yoga, Pilates, running ou gym posturale, ateliers bien-être et mini-retraites d’équipe à Cergy et dans le Val-d’Oise."
 >
-	<section class="wrap pt-12 pb-16 md:pt-20 md:pb-24">
-		<h1 class="max-w-4xl">Des pauses qui remettent vos équipes en mouvement</h1>
-		<p class="lede mt-6">
-			Entre deux réunions, le corps passe vite au second plan. Nous proposons à vos salariés des
-			cours réguliers, des ateliers et des mini-retraites pour bouger, souffler et se retrouver
-			autrement que devant un écran.
-		</p>
-		<div class="mt-8 flex flex-wrap items-center gap-x-6 gap-y-3">
-			<Cta href="/contact/">Parlons de votre équipe</Cta>
-			<Cta href="#cours-reguliers" variant="link">Voir les trois formats</Cta>
+	<section class="hero entreprises-hero on-dark">
+		<Image
+			src={heroPhoto}
+			alt=""
+			widths={[640, 960, 1280, 1600, 2000]}
+			sizes="100vw"
+			class="hero-photo"
+			loading="eager"
+			fetchpriority="high"
+		/>
+		<div class="hero-veil" aria-hidden="true"></div>
+		<div class="wrap hero-content">
+			<div class="hero-text">
+				<h1>Des expériences bien-être pensées pour vos équipes</h1>
+				<p class="lede mt-6">
+					Cours de Pilates, mobilité, ateliers thématiques et mini-retraites : nous créons des
+					expériences accessibles et adaptées au rythme de votre entreprise.
+				</p>
+				<p class="mt-4 max-w-xl">
+					Une autre façon d’intégrer le mouvement dans le quotidien professionnel, de favoriser le
+					bien-être des collaborateurs et de créer des moments de partage.
+				</p>
+				<nav class="raccourcis mt-8" aria-label="Nos trois formats">
+					<a class="btn btn-primary" href="#cours-reguliers">Cours réguliers</a>
+					<a class="btn btn-ghost" href="#ateliers">Ateliers</a>
+					<a class="btn btn-ghost" href="#mini-retraites">Mini-retraites</a>
+				</nav>
+				<p class="zone mt-6">
+					{ZONE_SENTENCE} Votre entreprise est ailleurs&nbsp;? <a href="/contact/">Parlons-en</a>.
+				</p>
+			</div>
+			<p class="hero-credit">Image d’illustration</p>
 		</div>
-		<p class="mt-5 text-ink-soft">
-			{ZONE_SENTENCE} Votre entreprise est ailleurs&nbsp;? <a href="/contact/">Parlons-en</a>.
-		</p>
+	</section>
 
-		<h2 class="mt-14 text-[clamp(1.25rem,1.12rem+0.6vw,1.5rem)] md:mt-20">
+	<section class="wrap pb-16 md:pb-24">
+		<h2 class="pt-14 text-[clamp(1.25rem,1.12rem+0.6vw,1.5rem)] md:pt-20">
 			Pourquoi bouger pendant la journée de travail&nbsp;?
 		</h2>
 		<KeyFigures />
@@ -125,3 +148,22 @@ const retreatSteps = [
 		text="Décrivez-nous votre contexte, même en quelques lignes. On construit le reste ensemble."
 	/>
 </BaseLayout>
+
+<style>
+	/* La phrase peinte sur le mur reste à droite, hors du texte, en grand écran. */
+	.entreprises-hero :global(.hero-photo) {
+		object-position: 60% 40%;
+	}
+	.entreprises-hero h1 {
+		max-width: 18ch;
+	}
+	.zone {
+		max-width: 36rem;
+		font-size: 0.9375rem;
+	}
+	.zone a {
+		font-weight: 700;
+		text-decoration: underline;
+		text-underline-offset: 0.2em;
+	}
+</style>

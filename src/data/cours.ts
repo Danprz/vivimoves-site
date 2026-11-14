@@ -34,9 +34,7 @@ export const cours: Cours[] = [
 		lieu: 'Centre Ann Lewis',
 		adresse: { rue: '5 rue Alexandre Prachay', ville: '95300 Pontoise' },
 		creneaux: [
-			{ jours: ['lundi'], heures: ['19h30'] },
-			{ jours: ['mardi'], heures: ['19h30'] },
-			{ jours: ['vendredi'], heures: ['12h30'] },
+			{ jours: ['lundi', 'mardi'], heures: ['19h30'] },
 		],
 		reservationUrl: BOOKWHEN_URL,
 		reservationLabel: 'Réserver un cours sur tapis',

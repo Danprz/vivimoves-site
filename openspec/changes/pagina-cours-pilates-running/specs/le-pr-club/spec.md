@@ -25,11 +25,11 @@ La página `/le-pr-club` SHALL presentar, después del primer bloque y en este o
 - **THEN** hay un único `h1` y cada uno de los tres bloques de cursos y club tiene su propio `h2`
 
 ### Requirement: Bloque de Pilates sobre tapis
-El bloque de Pilates sobre tapis SHALL indicar que los cursos tienen lugar en el Centre Ann Lewis, 5 rue Alexandre Prachay, Pontoise, y SHALL listar sus horarios: lundi a las 19h30, mardi a las 19h30 y vendredi a las 12h30. SHALL ofrecer como acción principal un botón de reserva que enlaza a `https://bookwhen.com/fr/leprclub`.
+El bloque de Pilates sobre tapis SHALL indicar que los cursos tienen lugar en el Centre Ann Lewis, 5 rue Alexandre Prachay, Pontoise, y SHALL listar sus horarios: lundi y mardi a las 19h30. SHALL ofrecer como acción principal un botón de reserva que enlaza a `https://bookwhen.com/fr/leprclub`.
 
 #### Scenario: Información para decidir
 - **WHEN** una persona lee el bloque de Pilates tapis
-- **THEN** encuentra el nombre del lugar, su dirección completa y los tres horarios semanales, en francés
+- **THEN** encuentra el nombre del lugar, su dirección completa y los días y la hora semanales, en francés
 
 #### Scenario: Reserva del curso de tapis
 - **WHEN** una persona activa el botón de reserva del bloque
@@ -131,7 +131,7 @@ La página SHALL publicar como información permanente únicamente los días, la
 
 #### Scenario: Horas publicadas
 - **WHEN** se listan todas las horas que aparecen en `/le-pr-club/`
-- **THEN** son exactamente 19h30 y 12h30 en el bloque de tapis y 11h, 12h y 13h en el bloque de Reformer
+- **THEN** son exactamente 19h30 en el bloque de tapis y 11h, 12h y 13h en el bloque de Reformer
 
 ### Requirement: Virginia como fundadora del club
 La página SHALL presentar a Virginia como fundadora de Le PR Club dentro del bloque del club. El sitio MUST NOT nombrar ni mostrar a Aude, que ya no forma parte del club, y MUST NOT publicar un año de creación mientras no esté confirmado.

@@ -8,7 +8,7 @@ import { Image } from 'astro:assets';
 import cergyPontoise from '../assets/cergy-pontoise.jpg';
 import seanceTerrasse from '../assets/club-seance-terrasse.jpg';
 import reformer from '../assets/club-reformer.jpg';
-import tshirt from '../assets/club-tshirt.jpg';
+import sortieRunning from '../assets/club-sortie-running.webp';
 import { cours } from '../data/cours';
 import { reviewFor } from '../data/reviews';
 import { BOOKWHEN_URL, PR_CLUB_INSTAGRAM_URL } from '../consts';
@@ -34,7 +34,7 @@ const [tapis, reformerCours] = cours;
 		<div class="hero-veil" aria-hidden="true"></div>
 		<div class="wrap hero-content">
 			<div class="hero-text">
-				<h1>Trouvez votre prochain cours <span class="lieu">à Cergy-Pontoise</span></h1>
+				<h1>Trouvez votre prochain cours <span class="lieu">à&nbsp;Cergy-Pontoise</span></h1>
 				<p class="lede mt-6">
 					Découvrez nos cours de Pilates sur tapis et Reformer, et trouvez le créneau qui vous
 					correspond.
@@ -46,7 +46,7 @@ const [tapis, reformerCours] = cours;
 				<nav class="raccourcis mt-8" aria-label="Accès aux cours">
 					<a class="btn btn-primary" href="#pilates-tapis">Pilates sur tapis</a>
 					<a class="btn btn-ghost" href="#pilates-reformer">Pilates Reformer</a>
-					<a class="text-link" href="#le-pr-club">Le PR Club</a>
+					<a class="btn btn-ghost" href="#sorties-running">Sorties running</a>
 				</nav>
 			</div>
 		</div>
@@ -66,21 +66,21 @@ const [tapis, reformerCours] = cours;
 		tone="sunk"
 	/>
 
-	<section id="le-pr-club" class="on-accent bg-action" aria-labelledby="le-pr-club-titre">
-		<div class="wrap section grid gap-10 md:grid-cols-[1.2fr_1fr] md:items-center md:gap-16">
+	<section id="sorties-running" aria-labelledby="sorties-running-titre">
+		<div class="wrap section running-layout">
 			<div>
-				<h2 id="le-pr-club-titre">Le PR Club</h2>
-				<p class="lede mt-5">
-					La communauté Pilates et running de Cergy-Pontoise : on bouge ensemble, sans
-					compétition, pour le plaisir et pour le groupe.
+				<h2 id="sorties-running-titre">Sorties running</h2>
+				<p class="lede mt-4">
+					Courez avec Le PR Club, la communauté Pilates et running de Cergy-Pontoise : on bouge
+					ensemble, sans compétition, pour le plaisir et pour le groupe.
 				</p>
-				<p class="gratuit mt-6">Sorties running gratuites</p>
+				<p class="gratuit mt-6">Sorties gratuites</p>
 				<p class="mt-4 measure">
 					Dates des prochaines sorties et vie du club : tout est annoncé sur Instagram. Le club a
 					été fondé par Virginia.
 				</p>
 				<div class="mt-8 flex flex-wrap items-center gap-x-6 gap-y-3">
-					<ExternalLink class="btn club-primary" href={PR_CLUB_INSTAGRAM_URL}>
+					<ExternalLink class="btn btn-primary" href={PR_CLUB_INSTAGRAM_URL}>
 						Suivre Le PR Club sur Instagram
 					</ExternalLink>
 					<ExternalLink class="text-link" href={BOOKWHEN_URL}>
@@ -89,17 +89,18 @@ const [tapis, reformerCours] = cours;
 				</div>
 			</div>
 			<Image
-				src={tshirt}
-				alt="T-shirt blanc du PR Club portant l’inscription « Le PR Club, Pilates & Running Club, Cergy-Pontoise »."
-				widths={[400, 640, 960]}
-				sizes="(min-width: 48rem) 26rem, 100vw"
-				class="aspect-[4/5] w-full max-w-md rounded-lg border-2 border-ink object-cover object-top md:justify-self-end"
+				quality={68}
+				src={sortieRunning}
+				alt="Trois personnes de dos courent sur la passerelle rouge de l’Axe Majeur, deux d’entre elles en t-shirt du PR Club."
+				widths={[480, 768, 1128]}
+				sizes="(min-width: 48rem) 34rem, 100vw"
+				class="running-photo"
 				loading="lazy"
 			/>
 		</div>
 	</section>
 
-	<GoogleReview review={reviewFor('le-pr-club')} />
+	<GoogleReview review={reviewFor('le-pr-club')} tone="sunk" />
 
 	<section class="on-dark bg-ink text-page">
 		<div class="wrap section grid gap-8 md:grid-cols-[1.5fr_1fr] md:items-end">
@@ -131,35 +132,36 @@ const [tapis, reformerCours] = cours;
 	.cours-hero .lieu {
 		color: var(--color-action);
 	}
-	.raccourcis {
-		display: flex;
-		flex-wrap: wrap;
-		align-items: center;
-		gap: 0.75rem 1rem;
-	}
-	.btn-ghost {
-		border-color: var(--color-page);
-		color: var(--color-page);
-		background: transparent;
-	}
-	.btn-ghost:hover {
-		background: var(--color-page);
-		color: var(--color-ink);
-	}
 	.gratuit {
 		display: inline-block;
 		padding: 0.45rem 1rem;
 		border: 2px solid var(--color-ink);
 		border-radius: 999px;
-		background: var(--color-page);
+		background: var(--color-surface);
 		font-weight: 700;
 	}
-	:global(.club-primary) {
-		background: var(--color-ink);
-		color: var(--color-page);
+	/* Même grille que les blocs de cours (CoursBlock). */
+	.running-layout {
+		display: grid;
+		gap: 2.5rem;
 	}
-	:global(.club-primary:hover) {
-		background: var(--color-page);
-		color: var(--color-ink);
+	/* Photo très saturée (rouge, bleu) : légèrement atténuée pour s’accorder aux deux autres. */
+	:global(.running-photo) {
+		width: 100%;
+		aspect-ratio: 4 / 5;
+		object-fit: cover;
+		object-position: 50% 60%;
+		border-radius: 0.5rem;
+		filter: saturate(0.7) brightness(0.92);
+	}
+	@media (min-width: 48rem) {
+		.running-layout {
+			grid-template-columns: minmax(0, 1.1fr) minmax(0, 1fr);
+			align-items: center;
+			gap: 4rem;
+		}
+		:global(.running-photo) {
+			max-height: 40rem;
+		}
 	}
 </style>
